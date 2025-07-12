@@ -9,11 +9,10 @@ const HeroSection_Citizenship: React.FC = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
         style={{ backgroundImage: 'url(/images/hero-background.jpg)' }}
       />
-      
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
-          <div className="space-y-8">
+          <div data-aos="fade-up"  className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                 Secure Your 
@@ -77,7 +76,7 @@ const HeroSection_Citizenship: React.FC = () => {
           </div>
 
           {/* Right Column - Image */}
-          <div className="relative">
+          <div data-aos="fade-left" className="relative">
             <div className="relative z-10">
               <img
                 src="/images/citizenship/passport-collection.jpg"

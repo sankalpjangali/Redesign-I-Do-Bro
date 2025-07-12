@@ -9,7 +9,7 @@ import LocationInfo from '../components/Sections/LocationInfo'
 
 const ContactPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white overflow-hidden">
 
       <main>
         <HeroSectionContact />

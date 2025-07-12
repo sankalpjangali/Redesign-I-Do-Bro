@@ -68,7 +68,7 @@ const TrustElements: React.FC = () => {
   ]
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -133,7 +133,7 @@ const TrustElements: React.FC = () => {
         </div>
 
         {/* Certifications and Recognition */}
-        <div data-aos="fade-up-right" className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div data-aos="fade-up-right" className="overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Certifications */}
           <div className="bg-green-50 rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
@@ -151,7 +151,7 @@ const TrustElements: React.FC = () => {
           </div>
 
           {/* Recognition */}
-          <div data-aos="fade-up-left" className="bg-blue-50 rounded-2xl p-8">
+          <div data-aos="fade-up-left" className="bg-blue-50 rounded-2xl p-8 overflow-hidden">
             <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
               <Star className="w-6 h-6 text-blue-600 mr-3" />
               Awards & Recognition
@@ -168,7 +168,7 @@ const TrustElements: React.FC = () => {
         </div>
 
         {/* Security and Privacy Assurance */}
-        <div data-aos="fade-up" className="mt-16 bg-gray-800 rounded-2xl p-8 text-center">
+        <div data-aos="fade-up" className="mt-16 bg-gray-800 rounded-2xl p-8 text-center overflow-hidden">
           <h3 className="text-2xl font-bold text-white mb-4">
             Your Information is Safe with Us
           </h3>

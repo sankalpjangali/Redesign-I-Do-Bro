@@ -1,0 +1,57 @@
+{
+  "page_title": "Entrepreneurship: Fostering innovation and resilience",
+  "hero_section": {
+    "title": "Entrepreneurship",
+    "subtitle": "Fostering innovation and resilience",
+    "cta": "ENTER the entrepreneurship community"
+  },
+  "impact_metrics": {
+    "enterprises_engaged": "4,114",
+    "entrepreneurs_supported": "1,275+",
+    "workshops": "313+",
+    "women_entrepreneurs_mentored": "154+",
+    "exhibition_days": "655+",
+    "sales_facilitated": "5,398,545+ INR"
+  },
+  "abcd_model": {
+    "description": "Idobro's ABCD model for entrepreneurship",
+    "focus": "Woman, Social and Green Enterprises (WSGEs)",
+    "approach": "nurturing ecosystem"
+  },
+  "target_audience": "Entrepreneurs and Enterprises",
+  "services": [
+    {
+      "title": "Linkages through exhibitions, stalls",
+      "description": "Connect with potential customers and partners"
+    },
+    {
+      "title": "Customized consultancy on business processes",
+      "description": "Tailored business guidance and optimization"
+    },
+    {
+      "title": "Access to conferences, programs and events",
+      "description": "Networking and learning opportunities"
+    },
+    {
+      "title": "Visibility-catalogues & social media",
+      "description": "Marketing and promotional support"
+    },
+    {
+      "title": "Access to Idobro's repository of knowledge",
+      "description": "Educational resources and materials"
+    },
+    {
+      "title": "One-on-one mentoring sessions",
+      "description": "Personalized guidance from experts"
+    }
+  ],
+  "brand_colors": {
+    "primary_orange": "#FF6B35",
+    "secondary_green": "#4CAF50",
+    "purple": "#7B68EE",
+    "pink": "#FF69B4",
+    "blue": "#2196F3",
+    "red": "#F44336"
+  },
+  "contact_email": "info@idobro.com"
+}

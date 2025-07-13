@@ -56,7 +56,7 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img

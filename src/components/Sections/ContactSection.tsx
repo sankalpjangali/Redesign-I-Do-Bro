@@ -99,7 +99,7 @@ const ContactSection: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gray-900 text-white">
+    <section id="contact" className="py-20 bg-gray-900 text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">

@@ -11,7 +11,7 @@ const Header: React.FC = () => {
       name: 'About',
       href: '#about',
       dropdown: [
-        { name: 'Our Story', href: '#about' },
+        { name: 'Our Story', href: '#our-story' },
         { name: 'PECO-SYSTEM', href: '#peco-system' },
         { name: 'Team', href: '#team' },
         { name: 'Global Reach', href: '#global-reach' }

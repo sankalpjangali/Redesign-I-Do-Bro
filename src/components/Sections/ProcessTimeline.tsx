@@ -81,7 +81,7 @@ const ProcessTimeline: React.FC = () => {
     <section id="process" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div data-aos="fade-in" className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">
             Your Path to Citizenship
           </h2>
@@ -111,7 +111,7 @@ const ProcessTimeline: React.FC = () => {
                 </div>
 
                 {/* Content */}
-                <div className={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'}`}>
+                <div data-aos="fade-up" className={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'}`}>
                   <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
                     {/* Mobile Icon */}
                     <div className="lg:hidden flex items-center mb-4">

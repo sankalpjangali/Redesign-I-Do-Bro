@@ -10,7 +10,7 @@ const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-white overflow-hidden">
+    <section id="our-story" className="py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero About Content */}
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
@@ -98,7 +98,7 @@ const AboutSection: React.FC = () => {
         </div>
 
         {/* PECO-SYSTEM Detailed Framework */}
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 lg:p-12 mb-20">
+        <div id="peco-system" className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 lg:p-12 mb-20">
           <div className="text-center mb-12">
             <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
               The PECO-SYSTEM Framework

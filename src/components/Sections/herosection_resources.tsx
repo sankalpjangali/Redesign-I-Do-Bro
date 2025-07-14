@@ -1,7 +1,7 @@
 import React from "react";  
 const HeroSection_Resources: React.FC = () => {
   return (
-    <section id="resources" className="relative  h-[42rem] bg-gradient-to-br from-purple-600 to-blue-300 pt-20 ">
+    <section id="resources" className="relative  h-[42rem] bg-gradient-to-br from-purple-700 to-blue-300 pt-20 ">
       <div className="max-w-7xl mx-auto px-4 mt-10 sm:px-6 lg:px-8   lg:pb-5">
         <div className="text-center space-y-8 py-30">
           <h2 className="text-5xl md:text-4xl lg:text-7xl font-bold text-white ">
@@ -27,7 +27,7 @@ const HeroSection_Resources: React.FC = () => {
             <p className="text-gray-600">Resources</p>
           </div>
           <div className="flex-1  rounded-lg shadow-lg p-6 w-40 lg:w-1/3 text-center bg-white bg-opacity-40 h-[1/4rem]">
-            <h2 className="text-xl font-bold text-gray-900  md:h-[4rem] h-[1/4rem]">40+</h2>
+            <h2 className="text-xl font-bold text-gray-900  md:h-[4rem] h-[1/4rem] ">40+</h2>
             <p className="text-gray-600">Resources</p>
           </div>
           

@@ -20,7 +20,7 @@ function App() {
 }, []);
   return (
     <div className="App">
-      <main>
+      <main className="box-border">
         <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>

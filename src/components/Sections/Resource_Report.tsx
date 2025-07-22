@@ -9,9 +9,9 @@ const ResourceReport: React.FC<{ partners: Partner[] }> = ({ partners }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const additionalPartners = [
-    "UNICEF", "British Council", "Hindustan Unilever Limited", 
-    "Glenmark Foundation", "Tata Capital", "WeConnect International",
-    "Kotak Education Foundation", "Adani Foundation", "Swedish Institute"
+    "SDG School", "Jeevan Rath 3.0", "I DO Bro's 3 layer approach", 
+    "Jeevan Rath 2.0", "One Pandemic Multiple Warriors 1.0", "Global Handwashing Week Celebration",
+    "Decade of Impact", "One Pandemic Multiple Warriors 1.0", "URBAN RESILIENCE","Immersive Tour for BNI","Sustainable Agriculture"
   ];
   return (
     <div className="py-20 bg-white" ref={ref}>

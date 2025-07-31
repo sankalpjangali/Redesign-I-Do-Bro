@@ -17,9 +17,9 @@ const SolutionsSection: React.FC = () => {
       icon: Users,
       image: '/images/solutions/citizenship-education.jpg',
       features: [
-        'RISE Values Framework',
-        'Corporate Volunteering Programs',
-        'Institute Partnership Programs',
+        'Employee Volunteering Programs',
+        'Cross-funtional Team Building ',
+        'Student Teacher Workshops',
         'Community Engagement Initiatives'
       ],
       stats: {
@@ -43,10 +43,10 @@ const SolutionsSection: React.FC = () => {
       icon: TrendingUp,
       image: '/images/solutions/entrepreneurship-startup.png',
       features: [
-        'WSG Entrepreneur Support',
-        'Young Women Social Entrepreneurship',
-        'Startup Incubation Workshops',
-        'Marketplace Integration'
+        'Linkage through exhibitions ,stalls',
+        'Access to conference program and events',
+        'Access to Idobros repository of knowledge',
+        'One-onone mentoring sessions'
       ],
       stats: {
         primary: '5K+',

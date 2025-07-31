@@ -12,10 +12,14 @@ const HeroSection: React.FC = () => {
 
   const finalMetrics = {
     countries: 7,
-    states: 24,
-    entrepreneurs: 5000,
-    students: 250000,
-    individuals: 500000
+    states: 22,
+    entrepreneurs: 1550,
+    students: 120000,
+    individuals: 1000000,
+    // wsg_entrepreneurs_sale:7000000,
+    // event_days:1800,
+    // institution:40,
+  
   };
 
   useEffect(() => {

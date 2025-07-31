@@ -3,7 +3,7 @@ import React from "react";
 const HeroSection_Resources = () => {
   return (
     <section id="resources" className="relative min-h-screen bg-gradient-to-br from-purple-700 via-purple-600 to-blue-400 pt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div data-aos="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Content */}
         <div className="text-center space-y-6 py-16">
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">

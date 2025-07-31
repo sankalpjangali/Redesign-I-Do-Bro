@@ -505,7 +505,7 @@ const TestimonialsSection: React.FC<{
             Hear from our valued partners about their experience working with Idobro.
           </p>
         </motion.div>
-        {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {allTestimonials.map((testimonial, index) => (
             <motion.div
               key={`${testimonial.speaker_name}-${index}`}
@@ -524,7 +524,7 @@ const TestimonialsSection: React.FC<{
               </div>
             </motion.div>
           ))}
-        </div> */}
+        </div> 
       </div>
     </div>
   );

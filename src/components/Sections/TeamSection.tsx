@@ -59,29 +59,10 @@ const TeamSection: React.FC = () => {
     }
   ]
 
-  const stats = [
-    {
-      icon: <Award className="h-6 w-6 text-blue-600" />,
-      title: "Professional Certifications",
-      value: "25+",
-      description: "Across our team"
-    },
-    {
-      icon: <BookOpen className="h-6 w-6 text-blue-600" />,
-      title: "Years Combined Experience",
-      value: "50+",
-      description: "In immigration law"
-    },
-    {
-      icon: <Globe className="h-6 w-6 text-blue-600" />,
-      title: "Languages Spoken",
-      value: "12+",
-      description: "To serve global clients"
-    }
-  ]
+  
 
   return (
-    <section id="team" className="py-20 bg-white">
+    <section id="team" className="py-20 bg-white ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -95,30 +76,19 @@ const TeamSection: React.FC = () => {
         </div>
 
         {/* Team Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center p-6 bg-blue-50 rounded-xl">
-              <div className="flex justify-center mb-4">
-                {stat.icon}
-              </div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">{stat.value}</div>
-              <div className="font-semibold text-gray-900 mb-1">{stat.title}</div>
-              <div className="text-sm text-gray-600">{stat.description}</div>
-            </div>
-          ))}
-        </div>
+       
 
         {/* Team Members */}
-        <div className="space-y-12">
+        <div className="flex flex-col  lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 m-2">
           {teamMembers.map((member, index) => (
             <div 
               key={index}
-              className={`flex flex-col lg:flex-row gap-8 p-8 bg-gray-50 rounded-2xl ${
+              className={`flex flex-col w-full lg:flex-col wrap gap-8 p-8 w-1/3 bg-gray-50 rounded-2xl ${
                 index % 2 === 1 ? 'lg:flex-row-reverse' : ''
               }`}
             >
               {/* Image */}
-              <div className="lg:w-1/3">
+              <div className="lg:w-full">
                 <div className="relative">
                   <img
                     src={member.image}
@@ -149,29 +119,16 @@ const TeamSection: React.FC = () => {
                     <span className="text-sm font-semibold text-gray-900">Experience:</span>
                     <span className="ml-2 text-sm text-gray-600">{member.experience}</span>
                   </div>
-                  <div>
-                    <span className="text-sm font-semibold text-gray-900">Languages:</span>
-                    <span className="ml-2 text-sm text-gray-600">{member.languages.join(', ')}</span>
-                  </div>
+                  
                 </div>
 
                 {/* Bio */}
-                <p className="text-gray-700 leading-relaxed">
+                {/* <p className="text-gray-700 leading-relaxed">
                   {member.bio}
-                </p>
+                </p> */}
 
                 {/* Qualifications */}
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-3">Key Qualifications:</h4>
-                  <ul className="space-y-2">
-                    {member.qualifications.map((qualification, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-gray-600">
-                        <Award className="h-4 w-4 text-blue-600 mr-3 flex-shrink-0" />
-                        {qualification}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                
 
                 {/* Contact */}
                 <div className="flex items-center space-x-4 pt-4 border-t border-gray-200">

@@ -13,9 +13,13 @@ const ResourceBlogs: React.FC = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
 
   useEffect(() => {
-    fetch("/data/blog.json")
+    console.log("Fetching blogs...");
+    fetch("http://localhost:3000/blogs") // Adjust the URL as needed
       .then((res) => res.json())
-      .then((data) => setBlogs(data));
+      .then((data) => {
+        setBlogs(data);
+        console.log("✅ Data:", data);
+      });
   }, []);
 
   return (

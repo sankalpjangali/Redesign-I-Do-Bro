@@ -11,9 +11,9 @@ const ImpactSection: React.FC = () => {
       description: "Transforming educational institutions through values-based learning, reaching over 250,000 students across multiple states.",
       image: "/images/impact/youth-leadership.jpg",
       stats: [
-        { label: "Students Impacted", value: "250K+" },
-        { label: "Educational Institutions", value: "500+" },
-        { label: "States Covered", value: "15" }
+        { label: "Students Impacted", value: "58K+" },
+        { label: "Educational Institutions", value: "540+" },
+        { label: "States Covered", value: "22" }
       ],
       outcomes: [
         "Enhanced civic awareness among students",
@@ -29,9 +29,9 @@ const ImpactSection: React.FC = () => {
       description: "Empowering women entrepreneurs through comprehensive support, mentorship, and market access programs.",
       image: "/images/impact/women-entrepreneurship.jpg",
       stats: [
-        { label: "Women Entrepreneurs", value: "2,500+" },
-        { label: "Businesses Launched", value: "800+" },
-        { label: "Revenue Generated", value: "$2M+" }
+        { label: "Women Entrepreneurs ", value: "1500+" },
+        { label: "Women Entrepreneurs Mentored", value: "200+" },
+        { label: "Sales Facilitated", value: "$7M+" }
       ],
       outcomes: [
         "Increased women's economic participation",
@@ -67,7 +67,7 @@ const ImpactSection: React.FC = () => {
       icon: Users,
       color: "purple",
       metrics: [
-        { label: "Students Sensitized", value: "250,000+", change: "+25%" },
+        { label: "Students Sensitized", value: "58,000+", change: "+25%" },
         { label: "Educational Events", value: "500+", change: "+40%" },
         { label: "Teacher Training Sessions", value: "1,200+", change: "+35%" }
       ]
@@ -77,9 +77,9 @@ const ImpactSection: React.FC = () => {
       icon: TrendingUp,
       color: "blue",
       metrics: [
-        { label: "Entrepreneurs Supported", value: "5,000+", change: "+30%" },
-        { label: "Sales Generated", value: "$2M+", change: "+45%" },
-        { label: "Jobs Created", value: "3,500+", change: "+28%" }
+        { label: "Entrepreneurs Supported", value: "1,550+", change: "+30%" },
+        { label: "Sales Generated", value: "$7M+", change: "+45%" },
+        { label: "Exhibition Days", value: "850+", change: "+28%" }
       ]
     },
     {
@@ -88,8 +88,8 @@ const ImpactSection: React.FC = () => {
       color: "green",
       metrics: [
         { label: "Communities Reached", value: "1,000+", change: "+50%" },
-        { label: "Volunteer Hours", value: "50,000+", change: "+60%" },
-        { label: "Beneficiaries", value: "1M+", change: "+35%" }
+        { label: "Projects (Total)", value: "150+", change: "+60%" },
+        { label: "Beneficiaries", value: "33,500", change: "+35%" }
       ]
     }
   ];

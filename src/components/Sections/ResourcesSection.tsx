@@ -206,25 +206,7 @@ const ResourcesSection: React.FC = () => {
         </div>
 
         {/* Newsletter & Updates */}
-        <div className="mt-20 text-center">
-          <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 text-white">
-            <h3 className="text-3xl font-bold mb-4">Stay Informed</h3>
-            <p className="text-xl text-purple-100 mb-6 max-w-2xl mx-auto">
-              Subscribe to our newsletter for the latest updates on our programs, 
-              new resources, and opportunities to get involved.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 bg-white/20 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-purple-200 focus:outline-none focus:border-white focus:bg-white/30"
-              />
-              <button className="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 whitespace-nowrap">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
   );

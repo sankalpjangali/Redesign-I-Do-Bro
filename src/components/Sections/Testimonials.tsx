@@ -4,12 +4,12 @@ import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react'
 const Testimonials: React.FC = () => {
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      location: "London, UK → Portugal",
-      program: "Portugal Golden Visa",
+      name: "Manish Joshi",
+      location: "India ",
+      program: "Additional Municipal Commissioner",
       image: "/images/citizenship/testimonial-1.webp",
       rating: 5,
-      quote: "The team at idobro made our Portuguese Golden Visa application seamless. Their expertise and attention to detail gave us confidence throughout the process. We now have EU residency and couldn't be happier with our decision.",
+      quote: "Idobro does an excellent job of facilitating cross sectorial partnerships. They have the knack of spotting critical issues and designing relevant solutions.",
       timeline: "Completed in 14 months"
     },
     {
@@ -153,7 +153,7 @@ const Testimonials: React.FC = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-3xl mx-auto">
+        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-3xl mx-auto">
           <div className="text-center">
             <div className="text-3xl font-bold text-blue-600 mb-2">98%</div>
             <div className="text-sm text-gray-600">Success Rate</div>
@@ -170,7 +170,7 @@ const Testimonials: React.FC = () => {
             <div className="text-3xl font-bold text-blue-600 mb-2">15+</div>
             <div className="text-sm text-gray-600">Countries</div>
           </div>
-        </div>
+        </div> */}
 
         {/* CTA */}
         <div className="text-center mt-12">

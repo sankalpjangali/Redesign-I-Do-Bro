@@ -7,7 +7,7 @@ const SolutionsSection: React.FC = () => {
       id: 'citizenship',
       title: 'Citizenship',
       subtitle: 'Empowering Communities',
-      description: 'Building stronger communities through values-based education, civic engagement, and social responsibility programs.',
+      description: '“Enable individuals and institutions to be involved with their surroundings, co-create solutions and build progressive societies based on the RISE values”',
       color: 'purple',
       gradientFrom: 'from-purple-600',
       gradientTo: 'to-purple-800',
@@ -33,7 +33,7 @@ const SolutionsSection: React.FC = () => {
       id: 'entrepreneurship',
       title: 'Entrepreneurship',
       subtitle: 'Fostering Innovation',
-      description: 'Supporting entrepreneurs with mentorship, funding access, market connections, and business development programs.',
+      description: '“Provide an inclusive and nurturing eco-system for Women, Social and Green (WSG) entrepreneurs to Access markets, Build Capacity, Create linkages & Deliver solutions” (ABCD)',
       color: 'blue',
       gradientFrom: 'from-blue-600',
       gradientTo: 'to-blue-800',
@@ -59,7 +59,7 @@ const SolutionsSection: React.FC = () => {
       id: 'partnership',
       title: 'Partnership',
       subtitle: 'Building Alliances',
-      description: 'Creating strategic partnerships that drive sustainable social impact through collaborative innovation and shared value creation.',
+      description: '“End-to-end or modular solutions to leverage strengths & resources across stakeholder groups to multiply socio- environomic impact” ',
       color: 'green',
       gradientFrom: 'from-green-600',
       gradientTo: 'to-green-800',
@@ -69,10 +69,10 @@ const SolutionsSection: React.FC = () => {
       icon: Handshake,
       image: '/images/solutions/partnership-collaboration.jpg',
       features: [
-        'Strategic Alliance Building',
-        'Cross-sector Collaboration',
-        'Impact Measurement',
-        'Sustainable Development Goals'
+        'Communication and advocacy',
+        'Stakeholder engagement',
+        'Evaluation and strategy development',
+        
       ],
       stats: {
         primary: '40+',
@@ -196,9 +196,9 @@ const SolutionsSection: React.FC = () => {
               <div className="bg-purple-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <Heart className="h-8 w-8 text-purple-600" />
               </div>
-              <h4 className="font-bold text-gray-900 mb-2">People</h4>
+              <h4 className="font-bold text-gray-900 mb-2">Partners</h4>
               <p className="text-sm text-gray-600">
-                Empowering individuals with skills, values, and opportunities
+                 Emphasizing collaboration across various sectors (government, corporations, NGOs, academia, local communities).
               </p>
             </div>
             
@@ -206,9 +206,9 @@ const SolutionsSection: React.FC = () => {
               <div className="bg-green-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <Globe className="h-8 w-8 text-green-600" />
               </div>
-              <h4 className="font-bold text-gray-900 mb-2">Environment</h4>
+              <h4 className="font-bold text-gray-900 mb-2">Entrepreneurs</h4>
               <p className="text-sm text-gray-600">
-                Creating sustainable solutions for environmental challenges
+                Supporting social and green enterprises, including women entrepreneurs.
               </p>
             </div>
             
@@ -216,19 +216,18 @@ const SolutionsSection: React.FC = () => {
               <div className="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <Users className="h-8 w-8 text-blue-600" />
               </div>
-              <h4 className="font-bold text-gray-900 mb-2">Community</h4>
+              <h4 className="font-bold text-gray-900 mb-2">Citizens</h4>
               <p className="text-sm text-gray-600">
-                Building resilient communities through collaboration
-              </p>
+                Fostering individual participation and ownership in creating a better world.              </p>
             </div>
             
             <div className="text-center">
               <div className="bg-orange-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <Building className="h-8 w-8 text-orange-600" />
               </div>
-              <h4 className="font-bold text-gray-900 mb-2">Organization</h4>
+              <h4 className="font-bold text-gray-900 mb-2">Ownership</h4>
               <p className="text-sm text-gray-600">
-                Strengthening institutions for lasting impact
+                  Encouraging individuals and organizations to take responsibility and drive action for sustainable development.
               </p>
             </div>
           </div>

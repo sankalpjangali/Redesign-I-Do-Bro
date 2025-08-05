@@ -20,7 +20,7 @@ function CitizenshipApp() {
       <ServicesOverview />
       <ProcessTimeline />
       <Testimonials />
-      <TeamSection />
+      {/* <TeamSection /> */}
       {/* <FAQ />
       <ContactSection />
       <Footer /> */}

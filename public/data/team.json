@@ -1,0 +1,54 @@
+[{
+      "name": "Elena Martinez",
+      "role": "Senior Immigration Attorney",
+      "specialization": "EU Citizenship & Golden Visa Programs",
+      "image": "/images/citizenship/team-member-1.jpg",
+      "experience": "15+ years",
+      "languages": ["English", "Spanish", "Portuguese"],
+      "qualifications": [
+        "LL.M. International Law, Oxford University",
+        "Licensed Immigration Attorney (EU)",
+        "Member, International Bar Association"
+      ],
+      "bio": "Elena specializes in European citizenship and investment immigration programs. She has successfully guided over 500 families through complex citizenship applications across multiple EU jurisdictions.",
+      "contact": {
+        "email": "elena@idobro.com",
+        "linkedin": "#"
+      }
+    },
+    {
+      "name": "David Thompson",
+      "role": "Head of Client Relations",
+      "specialization": "Investment Immigration & Due Diligence",
+      "image": "/images/citizenship/team-member-2.jpg",
+      "experience": "12+ years",
+      "languages": ["English", "French", "German"],
+      "qualifications": [
+        "MBA Finance, London Business School",
+        "Certified Investment Advisor",
+        "Former Banking Executive"
+      ],
+      "bio": "David brings extensive financial services experience to help clients navigate investment requirements and optimize their citizenship investment strategies for maximum returns.",
+      "contact": {
+        "email": "david@idobro.com",
+        "linkedin": "#"
+      }
+    },
+    {
+      "name": "Dr. Sarah Chen",
+      "role": "Legal Director",
+      "specialization": "International Law & Compliance",
+      "image": "/images/citizenship/success-story.jpg",
+      "experience": "18+ years",
+      "languages": ["English", "Mandarin", "Japanese"],
+      "qualifications": [
+        "PhD International Law, Harvard Law",
+        "Former UN Legal Advisor",
+        "Published Author on Immigration Law"
+      ],
+      "bio": "Dr. Chen oversees all legal compliance matters and has authored numerous publications on international immigration law. She ensures all our processes meet the highest legal standards.",
+      "contact": {
+        "email": "sarah@idobro.com",
+        "linkedin": "#"
+      }
+    }]

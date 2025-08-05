@@ -1,9 +1,21 @@
 import React from "react";
 import { Target, Eye, Heart, Award, MapPin, Users } from "lucide-react";
+const YearDifference = () => {
+  const startDate = new Date("2009-09-01"); // 🎯 starting date (e.g., Sept 2010)
+  const now = new Date();
+
+  let yearsDiff = now.getFullYear() - startDate.getFullYear();
+
+  // if current month is before September, subtract one year
+  if (now.getMonth() < 8) {
+    yearsDiff--;
+  }
+  return yearsDiff;
+};
 
 const AboutSection: React.FC = () => {
   const achievements = [
-    { icon: Award, label: "Years of Impact", value: "12+" },
+    { icon: Award, label: "Years of Impact", value: `${YearDifference()}+` },
     { icon: MapPin, label: "Countries", value: "7" },
     { icon: Users, label: "Lives Impacted", value: "1M+" },
     { icon: Heart, label: "Partners", value: "40+" },
@@ -69,7 +81,7 @@ const AboutSection: React.FC = () => {
               data-aos="fade-up-left"
               className="absolute -bottom-6 -right-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-2xl shadow-xl"
             >
-              <div className="text-3xl font-bold mb-2">15+</div> { /* need to add time to make sure it changes every year */}
+              <div className="text-3xl font-bold mb-2">{YearDifference()}+</div>
               <div className="text-sm">Years of Inclusive Impact</div>
             </div>
           </div>
@@ -129,12 +141,11 @@ const AboutSection: React.FC = () => {
                   <div className="bg-purple-100 rounded-full p-3 mr-4">
                     <Heart className="h-6 w-6 text-purple-600" />
                   </div>
-                  <h4 className="text-xl font-bold text-gray-900">People</h4>
+                  <h4 className="text-xl font-bold text-gray-900">Partners</h4>
                 </div>
                 <p className="text-gray-600">
-                  Empowering individuals with skills, knowledge, and values to
-                  become change agents in their communities and drive meaningful
-                  transformation.
+                  Emphasizing collaboration across various sectors (government, corporations, NGOs, academia, local communities).
+
                 </p>
               </div>
 
@@ -144,13 +155,12 @@ const AboutSection: React.FC = () => {
                     <Target className="h-6 w-6 text-green-600" />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900">
-                    Environment
+                    Entrepreneurs
                   </h4>
                 </div>
                 <p className="text-gray-600">
-                  Creating sustainable environmental solutions that protect
-                  natural resources while supporting community development and
-                  economic growth.
+                  Supporting social and green enterprises, including women entrepreneurs.
+
                 </p>
               </div>
 
@@ -159,12 +169,11 @@ const AboutSection: React.FC = () => {
                   <div className="bg-blue-100 rounded-full p-3 mr-4">
                     <Users className="h-6 w-6 text-blue-600" />
                   </div>
-                  <h4 className="text-xl font-bold text-gray-900">Community</h4>
+                  <h4 className="text-xl font-bold text-gray-900">Citizenship</h4>
                 </div>
                 <p className="text-gray-600">
-                  Building resilient communities through collaborative networks,
-                  shared resources, and collective action for sustainable
-                  development.
+                  Fostering individual participation and ownership in creating a better world.
+
                 </p>
               </div>
 
@@ -174,13 +183,11 @@ const AboutSection: React.FC = () => {
                     <Award className="h-6 w-6 text-orange-600" />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900">
-                    Organization
+                    Ownership
                   </h4>
                 </div>
                 <p className="text-gray-600">
-                  Strengthening institutional capacity and governance structures
-                  to ensure sustainable impact and effective resource
-                  utilization.
+                  Encouraging individuals and organizations to take responsibility and drive action for sustainable development.
                 </p>
               </div>
             </div>

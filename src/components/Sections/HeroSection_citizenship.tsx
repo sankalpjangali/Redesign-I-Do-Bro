@@ -1,27 +1,32 @@
-import React from 'react'
-import { ArrowRight, Shield, Award, Users } from 'lucide-react'
+import React from "react";
+import { ArrowRight, Shield, Award, Users } from "lucide-react";
 
 const HeroSection_Citizenship: React.FC = () => {
   return (
-    <section id="home" className="relative bg-gradient-to-br from-blue-50 to-indigo-100 pt-20">
+    <section
+      id="home"
+      className="relative bg-gradient-to-br from-blue-50 to-indigo-100 pt-20"
+    >
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
-        style={{ backgroundImage: 'url(/images/hero-background.jpg)' }}
+        style={{ backgroundImage: "url(/images/hero-background.jpg)" }}
       />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
-          <div data-aos="fade-up"  className="space-y-8">
+          <div data-aos="fade-up" className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Secure Your 
-                <span className="text-blue-600 block">Second Citizenship</span>
-                with Confidence
+                <span className="text-blue-600 block"> Citizenship</span>
+                The power of one for collective good
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed">
-                Expert immigration and citizenship services to help you and your family secure a better future. 
-                Professional guidance through every step of your citizenship journey.
+                The RISE Citizenship program helps youth and corporate employees
+                to understand themselves better and also identify opportunities
+                to be involved in their surroundings. As RISE Citizens who want
+                to act and create sustained change, all four RISE values need to
+                be nurtured.
               </p>
             </div>
 
@@ -29,15 +34,21 @@ const HeroSection_Citizenship: React.FC = () => {
             <div className="flex flex-wrap gap-6">
               <div className="flex items-center space-x-2">
                 <Shield className="h-5 w-5 text-green-600" />
-                <span className="text-sm font-medium text-gray-700">Secure & Confidential</span>
+                <span className="text-sm font-medium text-gray-700">
+                  Secure & Confidential
+                </span>
               </div>
               <div className="flex items-center space-x-2">
                 <Award className="h-5 w-5 text-green-600" />
-                <span className="text-sm font-medium text-gray-700">Expert Legal Team</span>
+                <span className="text-sm font-medium text-gray-700">
+                  Expert Legal Team
+                </span>
               </div>
               <div className="flex items-center space-x-2">
                 <Users className="h-5 w-5 text-green-600" />
-                <span className="text-sm font-medium text-gray-700">1000+ Successful Cases</span>
+                <span className="text-sm font-medium text-gray-700">
+                  1000+ Successful Cases
+                </span>
               </div>
             </div>
 
@@ -61,15 +72,15 @@ const HeroSection_Citizenship: React.FC = () => {
             {/* Success Stats */}
             <div className="grid grid-cols-3 gap-6 pt-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">98%</div>
-                <div className="text-sm text-gray-600">Success Rate</div>
+                <div className="text-3xl font-bold text-blue-600">58,525</div>
+                <div className="text-sm text-gray-600">Beneficiaries</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">1000+</div>
-                <div className="text-sm text-gray-600">Happy Clients</div>
+                <div className="text-3xl font-bold text-blue-600">795</div>
+                <div className="text-sm text-gray-600">Professionals engaged</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">15+</div>
+                <div className="text-3xl font-bold text-blue-600">20+</div>
                 <div className="text-sm text-gray-600">Countries</div>
               </div>
             </div>
@@ -91,7 +102,7 @@ const HeroSection_Citizenship: React.FC = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default HeroSection_Citizenship
+export default HeroSection_Citizenship;

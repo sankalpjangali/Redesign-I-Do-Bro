@@ -1,55 +1,63 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react'
 
 const Testimonials: React.FC = () => {
-  const testimonials = [
-    {
-      name: "Manish Joshi",
-      location: "India ",
-      program: "Additional Municipal Commissioner",
-      image: "/images/citizenship/testimonial-1.webp",
-      rating: 5,
-      quote: "Idobro does an excellent job of facilitating cross sectorial partnerships. They have the knack of spotting critical issues and designing relevant solutions.",
-      timeline: "Completed in 14 months"
-    },
-    {
-      name: "Michael Chen",
-      location: "Hong Kong → Malta",
-      program: "Malta Citizenship Program",
-      image: "/images/citizenship/success-story.jpg",
-      rating: 5,
-      quote: "Outstanding service from start to finish. The idobro team guided us through every step of the Malta citizenship process. Their professionalism and knowledge made what seemed impossible, achievable. Highly recommended!",
-      timeline: "Completed in 32 months"
-    },
-    {
-      name: "Elena Rodriguez",
-      location: "Mexico → Spain",
-      program: "Spain Investor Visa",
-      image: "/images/citizenship/team-member-1.jpg",
-      rating: 5,
-      quote: "Professional, reliable, and incredibly knowledgeable. The team helped us navigate the Spanish investor visa requirements with ease. We're now living our dream life in Barcelona thanks to their excellent service.",
-      timeline: "Completed in 8 months"
-    },
-    {
-      name: "David Thompson",
-      location: "USA → Greece",
-      program: "Greece Golden Visa",
-      image: "/images/citizenship/team-member-2.jpg",
-      rating: 5,
-      quote: "I was initially overwhelmed by the citizenship process, but idobro simplified everything. Their transparent communication and expert guidance made the Greek Golden Visa application straightforward. Excellent value for money.",
-      timeline: "Completed in 10 months"
-    },
-    {
-      name: "Fatima Al-Rashid",
-      location: "UAE → Cyprus",
-      program: "Cyprus Investment Program",
-      image: "/images/citizenship/consultation-office.webp",
-      rating: 5,
-      quote: "The level of service provided by idobro exceeded all expectations. They handled our Cyprus investment program application with utmost professionalism. We now have EU residency and access to incredible opportunities.",
-      timeline: "Completed in 7 months"
-    }
-  ]
-
+  // const testimonials = [
+  //   {
+  //     name: "Manish Joshi",
+  //     location: "India ",
+  //     program: "Additional Municipal Commissioner",
+  //     // image: "/images/citizenship/testimonial-1.webp",
+  //     rate: 5,
+  //     quote: "Idobro does an excellent job of facilitating cross sectorial partnerships. They have the knack of spotting critical issues and designing relevant solutions.",
+  //     // timeline: "Completed in 14 months"
+  //   }//,
+  //   // {
+  //   //   name: "Michael Chen",
+  //   //   location: "Hong Kong → Malta",
+  //   //   program: "Malta Citizenship Program",
+  //   //   image: "/images/citizenship/success-story.jpg",
+  //   //   rate: 5,
+  //   //   quote: "Outstanding service from start to finish. The idobro team guided us through every step of the Malta citizenship process. Their professionalism and knowledge made what seemed impossible, achievable. Highly recommended!",
+  //   //   timeline: "Completed in 32 months"
+  //   // },
+  //   // {
+  //   //   name: "Elena Rodriguez",
+  //   //   location: "Mexico → Spain",
+  //   //   program: "Spain Investor Visa",
+  //   //   image: "/images/citizenship/team-member-1.jpg",
+  //   //   rating: 5,
+  //   //   quote: "Professional, reliable, and incredibly knowledgeable. The team helped us navigate the Spanish investor visa requirements with ease. We're now living our dream life in Barcelona thanks to their excellent service.",
+  //   //   timeline: "Completed in 8 months"
+  //   // },
+  //   // {
+  //   //   name: "David Thompson",
+  //   //   location: "USA → Greece",
+  //   //   program: "Greece Golden Visa",
+  //   //   image: "/images/citizenship/team-member-2.jpg",
+  //   //   rating: 5,
+  //   //   quote: "I was initially overwhelmed by the citizenship process, but idobro simplified everything. Their transparent communication and expert guidance made the Greek Golden Visa application straightforward. Excellent value for money.",
+  //   //   timeline: "Completed in 10 months"
+  //   // },
+  //   // {
+  //   //   name: "Fatima Al-Rashid",
+  //   //   location: "UAE → Cyprus",
+  //   //   program: "Cyprus Investment Program",
+  //   //   image: "/images/citizenship/consultation-office.webp",
+  //   //   rate: 5,
+  //   //   quote: "The level of service provided by idobro exceeded all expectations. They handled our Cyprus investment program application with utmost professionalism. We now have EU residency and access to incredible opportunities.",
+  //   //   timeline: "Completed in 7 months"
+  //   // }
+  // ]
+const [testimonials,setTestimonials] = useState([]);
+useEffect(() => {
+  fetch("http://localhost:3000/api/citizenship_stories")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Fetched Testimonials:", data);
+      setTestimonials(data);
+    });
+}, []);
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const nextTestimonial = () => {
@@ -92,28 +100,28 @@ const Testimonials: React.FC = () => {
                       </blockquote>
                       
                       {/* Rating */}
-                      <div className="flex items-center mb-4">
+                      {/* <div className="flex items-center mb-4">
                         {[...Array(testimonial.rating)].map((_, i) => (
                           <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                         ))}
-                      </div>
+                      </div> */}
 
                       {/* Client Info */}
                       <div className="space-y-1">
                         <p className="font-semibold text-gray-900">{testimonial.name}</p>
                         <p className="text-sm text-gray-600">{testimonial.location}</p>
                         <p className="text-sm text-blue-600 font-medium">{testimonial.program}</p>
-                        <p className="text-xs text-gray-500">{testimonial.timeline}</p>
+                        {/* <p className="text-xs text-gray-500">{testimonial.timeline}</p> */}
                       </div>
                     </div>
 
                     {/* Image */}
                     <div className="md:w-1/3">
-                      <img
+                      {/* <img
                         src={testimonial.image}
                         alt={testimonial.name}
                         className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover mx-auto shadow-lg"
-                      />
+                      /> */}
                     </div>
                   </div>
                 ))}

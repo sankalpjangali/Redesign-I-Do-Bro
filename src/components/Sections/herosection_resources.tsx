@@ -27,12 +27,12 @@ const HeroSection_Resources = () => {
             <h3 className="text-4xl font-bold text-white mb-2">
               40+
             </h3>
-            <p className="text-purple-100 font-medium">Resources</p>
+            <p className="text-purple-100 font-medium">News</p>
           </div>
           
           <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/20 ransition-all duration-300 hover:bg-white/30 hover:scale-105 hover:shadow-xl">
             <h3 className="text-4xl font-bold text-white mb-2">
-              40+
+              10+
             </h3>
             <p className="text-purple-100 font-medium">Reports</p>
           </div>

@@ -124,7 +124,7 @@ const ProcessTimeline: React.FC = () => {
                     </div>
 
                     {/* Desktop Duration */}
-                    <div className="hidden lg:block text-sm font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-4 inline-block">
+                    <div className=" lg:block text-sm font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-4 inline-block">
                       {step.duration}
                     </div>
 

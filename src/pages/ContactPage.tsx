@@ -19,6 +19,7 @@ const ContactPage: React.FC = () => {
         <LocationInfo />
       </main>
     </div>
+    
   )
 }
 

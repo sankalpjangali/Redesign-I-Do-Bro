@@ -13,7 +13,7 @@ export default function Home() {
     <SolutionsSection />
     <ImpactSection />
     <TeamSection />
-    <ResourcesSection />
+    {/* <ResourcesSection /> */}
     <ContactSection />
     </>
   );

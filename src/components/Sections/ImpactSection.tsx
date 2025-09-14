@@ -9,7 +9,7 @@ const ImpactSection: React.FC = () => {
       title: "RISE Values Framework Impact",
       category: "Citizenship",
       description: "Transforming educational institutions through values-based learning, reaching over 250,000 students across multiple states.",
-      image: "/images/impact/youth-leadership.jpg",
+      image: "",
       stats: [
         { label: "Students Impacted", value: "58K+" },
         { label: "Educational Institutions", value: "540+" },
@@ -27,7 +27,7 @@ const ImpactSection: React.FC = () => {
       title: "Women's Social Entrepreneurship Program",
       category: "Entrepreneurship",
       description: "Empowering women entrepreneurs through comprehensive support, mentorship, and market access programs.",
-      image: "/images/impact/women-entrepreneurship.jpg",
+      image: "https://res.cloudinary.com/dhs64xefe/image/upload/v1757680220/entrtepreneurship_avr4al.png",
       stats: [
         { label: "Women Entrepreneurs ", value: "1500+" },
         { label: "Women Entrepreneurs Mentored", value: "200+" },
@@ -77,9 +77,9 @@ const ImpactSection: React.FC = () => {
       icon: TrendingUp,
       color: "blue",
       metrics: [
-        { label: "Entrepreneurs Supported", value: "1,550+", change: "+30%" },
-        { label: "Sales Generated", value: "$7M+", change: "+45%" },
-        { label: "Exhibition Days", value: "850+", change: "+28%" }
+        { label: "Entrepreneurs Supported", value: "1,550+" },
+        { label: "Sales Generated", value: "$7M+" },
+        { label: "Exhibition Days", value: "850+" }
       ]
     },
     {
@@ -110,7 +110,7 @@ const ImpactSection: React.FC = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Measuring Our
+            Our
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">
               Social Impact
             </span>
@@ -141,9 +141,9 @@ const ImpactSection: React.FC = () => {
                         <div className="text-2xl font-bold text-gray-900">{metric.value}</div>
                         <div className="text-sm text-gray-600">{metric.label}</div>
                       </div>
-                      <div className={`text-sm font-semibold text-${category.color}-600 bg-${category.color}-50 px-2 py-1 rounded-full`}>
+                      {/* <div className={`text-sm font-semibold text-${category.color}-600 bg-${category.color}-50 px-2 py-1 rounded-full`}>
                         {metric.change}
-                      </div>
+                      </div> */}
                     </div>
                   ))}
                 </div>
@@ -153,7 +153,7 @@ const ImpactSection: React.FC = () => {
         </div>
 
         {/* Success Stories Carousel */}
-        <div data-aos="fade-down"
+        {/* <div data-aos="fade-down"
      data-aos-easing="linear"
      data-aos-duration="1000" className="bg-white rounded-2xl shadow-xl overflow-hidden mb-20">
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6">
@@ -199,7 +199,7 @@ const ImpactSection: React.FC = () => {
                 {currentStory.description}
               </p>
 
-              {/* Stats */}
+              
               <div className="grid grid-cols-3 gap-4 mb-6">
                 {currentStory.stats.map((stat, index) => (
                   <div key={index} className="text-center">
@@ -209,7 +209,7 @@ const ImpactSection: React.FC = () => {
                 ))}
               </div>
 
-              {/* Outcomes */}
+              
               <div className="mb-6">
                 <h5 className="font-semibold text-gray-900 mb-3">Key Outcomes:</h5>
                 <ul className="space-y-2">
@@ -234,7 +234,7 @@ const ImpactSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Story Indicators */}
+          
           <div className="flex justify-center space-x-2 pb-6">
             {successStories.map((_, index) => (
               <button
@@ -246,7 +246,7 @@ const ImpactSection: React.FC = () => {
               />
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Call to Action */}
         <div  data-aos= 'fade-up'data-aos-duration="1000" className="bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl p-8 text-center text-white">

@@ -9,22 +9,18 @@ const Header: React.FC = () => {
     { name: 'Home', href: '/' },
     {
       name: 'About',
-      href: '#about',
+      href: '/#about',
       dropdown: [
-        { name: 'Our Story', href: '#our-story' },
-        { name: 'PECO-SYSTEM', href: '#peco-system' },
-        { name: 'Team', href: '#team' },
-        { name: 'Global Reach', href: '#global-reach' }
+        { name: 'Our Story', href: '/#our-story' },
+        { name: 'PECO-SYSTEM', href: '/#peco-system' },
+        { name: 'Team', href: '/#team' },
+        { name: 'Global Reach', href: '/#global-reach' }
       ]
     },
     {
       name: 'Solutions',
-      href: '#solutions',
-      dropdown: [
-        { name: 'Citizenship', href: 'citizenship' },
-        { name: 'Entrepreneurship', href: 'entrepreneurship' },
-        { name: 'Partnership', href: 'partnership' }
-      ]
+      href: '/solutions',
+      
     },
     // { name: 'Impact', href: '#impact' },
     { name: 'Resources', href: 'resources' },

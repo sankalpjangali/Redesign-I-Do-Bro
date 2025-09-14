@@ -121,7 +121,7 @@ const WhyChooseUs: React.FC = () => {
             </div>
             <div className="relative">
               <img
-                src="/images/citizenship/trust-badges.jpg"
+                src="../images/citizenship/trusted.png"
                 alt="Trust and Security"
                 className="w-full h-auto rounded-xl shadow-lg"
               />

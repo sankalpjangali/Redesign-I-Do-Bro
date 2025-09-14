@@ -64,7 +64,7 @@ const HeroSection: React.FC = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src="/images/hero/community-empowerment.jpg"
+          src="https://res.cloudinary.com/dhs64xefe/image/upload/v1757831861/Website_Homepage_Images_25_vytt6j.png"
           alt="Community empowerment and social impact"
           className="w-full h-full object-cover"
         />

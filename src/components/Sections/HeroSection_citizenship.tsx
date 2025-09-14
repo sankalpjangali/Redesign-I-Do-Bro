@@ -10,7 +10,7 @@ const HeroSection_Citizenship: React.FC = () => {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
-        style={{ backgroundImage: "url(/images/hero-background.jpg)" }}
+        style={{ backgroundImage: "url(https://res.cloudinary.com/dhs64xefe/image/upload/v1757680213/citizenship_hhqasl.png)" }}
       />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -90,7 +90,7 @@ const HeroSection_Citizenship: React.FC = () => {
           <div data-aos="fade-left" className="relative">
             <div className="relative z-10">
               <img
-                src="/images/citizenship/passport-collection.jpg"
+                src="../images/citizenship/trusted_citizenship.png"
                 alt="Citizenship and Passport Services"
                 className="w-full h-auto rounded-2xl shadow-2xl"
               />

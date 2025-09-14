@@ -18,7 +18,7 @@ function CitizenshipApp() {
       <HeroSection_Citizenship />
       <WhyChooseUs />
       <ServicesOverview />
-      <ProcessTimeline />
+      {/* <ProcessTimeline /> */}
       <Testimonials />
       {/* <TeamSection /> */}
       {/* <FAQ />

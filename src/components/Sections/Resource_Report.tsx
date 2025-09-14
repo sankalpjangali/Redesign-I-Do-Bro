@@ -1,18 +1,25 @@
 
 import React, { useState, useEffect ,useRef} from 'react';
 import { motion, useInView } from 'framer-motion';
-interface Partner {
-  name: string;
-  logo: string;
+interface Reports {
+  id: number;
+  title: string;
+  pdf_link: string;
+  imageUrl: string;
 }
-const ResourceReport: React.FC<{ partners: Partner[] }> = ({ partners }) => {
+const ResourceReport: React.FC= () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  const additionalPartners = [
-    "SDG School", "Jeevan Rath 3.0", "I DO Bro's 3 layer approach", 
-    "Jeevan Rath 2.0", "One Pandemic Multiple Warriors 1.0", "Global Handwashing Week Celebration",
-    "Decade of Impact", "One Pandemic Multiple Warriors 1.0", "URBAN RESILIENCE","Immersive Tour for BNI","Sustainable Agriculture"
-  ];
+  const [additionalReports, setAdditionalReports] = useState<Reports[]>([]);
+  useEffect(() => {
+    // Simulating an API call to fetch additional reports
+    const fetchAdditionalReports = async () => {
+      const response = await fetch("http://localhost:3000/api/Reports"); // Adjust the URL as needed
+      const data = await response.json();
+      setAdditionalReports(data);
+    };
+    fetchAdditionalReports();
+  }, []);
   return (
     <div className="py-20 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,18 +42,20 @@ const ResourceReport: React.FC<{ partners: Partner[] }> = ({ partners }) => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center"
         >
-          {additionalPartners.map((partner, index) => (
+          {additionalReports.map((report, index) => (
             <motion.div
-              key={partner}
+              key={report.id}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-all duration-300 text-center"
+              onClick={() => window.open(`https://res.cloudinary.com/dhs64xefe/image/upload/${report.pdf_link}`, "_blank")}
             >
               <div className="w-full h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg mb-4 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">{partner.charAt(0)}</span>
+                <img src={`https://res.cloudinary.com/dhs64xefe/image/upload/${report.imageUrl}`} alt="" className='w-full h-full object-cover rounded-lg' />
+                {/* <span className="text-white font-bold text-lg">{report.title.charAt(0)}</span> */}
               </div>
-              <p className="text-sm font-medium text-gray-900">{partner}</p>
+              <p className="text-sm font-medium text-gray-900">{report.title}</p>
             </motion.div>
           ))}
         </motion.div>

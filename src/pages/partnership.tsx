@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { 
@@ -82,7 +82,24 @@ interface Partner {
 const PartnershipPage: React.FC = () => {
   const [partnershipInfo, setPartnershipInfo] = useState<PartnershipInfo | null>(null);
   const [partnershipModel, setPartnershipModel] = useState<PartnershipModel | null>(null);
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<Project[]>([
+    {
+    "project_name": "Sustainable Communities Initiative",
+    "partner": "GreenEarth Foundation",
+    "timeline": "2022 - 2024",
+    "project_details": "A multi-stakeholder program aimed at building sustainable housing and promoting renewable energy adoption in semi-urban regions.",
+    "idobro_role": "Designed community engagement strategy, facilitated training workshops, and monitored sustainability metrics.",
+    "outcomes": "200 eco-friendly homes built, 500 families trained in renewable energy usage, 30% reduction in local carbon footprint."
+  },
+  {
+    "project_name": "Digital Literacy for Women",
+    "partner": "TechForAll Pvt. Ltd.",
+    "timeline": "2021 - 2023",
+    "project_details": "A grassroots initiative to empower women in rural areas with digital literacy skills to access education and employment opportunities.",
+    "idobro_role": "Developed curriculum, coordinated trainers, and managed on-ground operations.",
+    "outcomes": "Over 3,000 women trained, 40% gained employment or started businesses using digital tools."
+  }
+  ]);
   const [testimonials, setTestimonials] = useState<Testimonial[]>([
     {
     quote: "This service exceeded all my expectations. Truly outstanding!",
@@ -119,7 +136,8 @@ const PartnershipPage: React.FC = () => {
         const modelData = await modelResponse.json();
         setPartnershipModel(modelData);
         // Load projects
-        const projectsResponse = await fetch('/data/idobro_partnership_projects.json');
+        const projectsResponse = await fetch('/data/projects_partnership.json');
+        console.log(projectsResponse);
         const projectsData = await projectsResponse.json();
         setProjects(projectsData.key_partnership_projects || []);
         // Load testimonials
@@ -164,20 +182,20 @@ const HeroSection: React.FC<{ partnershipModel: PartnershipModel | null }> = ({ 
   const isInView = useInView(ref, { once: true });
   const impactStats = [
     { icon: Globe, value: "7", label: "Countries", color: "text-blue-600" },
-    { icon: Building, value: "24", label: "Indian States", color: "text-green-600" },
-    { icon: Users, value: "5,000", label: "WSG Entrepreneurs", color: "text-purple-600" },
-    { icon: TrendingUp, value: "17M", label: "WSG Sales", color: "text-red-600" },
-    { icon: Heart, value: "2.25M", label: "Individuals Reached", color: "text-pink-600" },
-    { icon: Award, value: "145K", label: "Students Sensitized", color: "text-indigo-600" }
+    { icon: Building, value: "22", label: "Indian States", color: "text-green-600" },
+    { icon: Users, value: "150+", label: "Projects", color: "text-purple-600" },
+    { icon: TrendingUp, value: "540+", label: "Institutions", color: "text-red-600" },
+    { icon: Heart, value: "650,000+", label: "Individuals Reached", color: "text-pink-600" },
+    { icon: Award, value: "100+", label: "Organizations Partnered", color: "text-indigo-600" }
   ];
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden ">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/images/hero-partnership.jpg" 
+          src="https://res.cloudinary.com/dhs64xefe/image/upload/v1757680204/partnership_atc70a.png" 
           alt="Partnership" 
-          className="w-full h-full object-cover opacity-20"
+          className="w-full h-full object-cover "
         />
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-blue-900/70 to-slate-800/80"></div>
       </div>
@@ -191,15 +209,13 @@ const HeroSection: React.FC<{ partnershipModel: PartnershipModel | null }> = ({ 
           className="space-y-8"
         >
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Partnership for
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent block">
-              Systemic Impact
+              Partnership
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Forge alliances driven by shared values. Overcome systemic barriers through collaboration. 
-            Co-create a sustainable world through market-based solutions.
+            Resource optimisation and scaling impact
           </p>
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -265,7 +281,7 @@ const PartnershipModelSection: React.FC<{ partnershipModel: PartnershipModel | n
       description: methodology_framework.purpose,
       color: "bg-blue-50 text-blue-600 border-blue-200"
     },
-    {
+    { 
       icon: Users,
       title: "Ecosystem Model", 
       description: "Helps identify challenges and capabilities required around a specific issue or community.",
@@ -352,11 +368,21 @@ const PartnershipModelSection: React.FC<{ partnershipModel: PartnershipModel | n
   );
 };
 // Case Studies Section Component
+// Updated Case Studies Section with better loading handling
 const CaseStudiesSection: React.FC<{ projects: Project[] }> = ({ projects }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const featuredProjects = projects.slice(0, 6); // Show first 6 projects
+
+  if (!projects || projects.length === 0) {
+    return (
+      <div className="py-20 bg-white text-center">
+        <h2 className="text-4xl font-bold text-gray-900">Loading Projects...</h2>
+      </div>
+    );
+  }
+
+  const featuredProjects = projects.slice(0, 6);
   return (
     <div className="py-20 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -374,6 +400,7 @@ const CaseStudiesSection: React.FC<{ projects: Project[] }> = ({ projects }) => 
           </p>
         </motion.div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
           {featuredProjects.map((project, index) => (
             <motion.div
               key={project.project_name}
@@ -485,10 +512,14 @@ const TestimonialsSection: React.FC<{
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   // Combine testimonials from both sources
-  const allTestimonials = [
-    ...testimonials,
-    ...(partnershipInfo?.partner_testimonials || [])
-  ];
+const allTestimonials: Testimonial[] = [
+  ...testimonials,
+  ...(partnershipInfo?.partner_testimonials.map(t => ({
+    quote: t.quote,
+    speaker_name: t.author,
+    speaker_title: t.title
+  })) || [])
+];
   return (
     <div className="py-20 bg-gradient-to-br from-blue-50 to-purple-50" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -10,6 +10,8 @@ import EntrepreneurshipPage from './pages/EntrepreneurshipPage';
 import CitizenshipApp from './pages/citizenship';
 import PartnershipPage from './pages/partnership';
 import ResourcesPage from './pages/Resources';
+import Solutionpage from './pages/solution';
+import AdminPanel from './pages/admin_page';
 function App() {
   useEffect(() => {
   AOS.init({
@@ -30,6 +32,8 @@ function App() {
           <Route path="/citizenship" element={<CitizenshipApp />} />
           <Route path="/partnership" element={<PartnershipPage />} />
           <Route path="/resources" element={<ResourcesPage />} />
+          <Route path="/solutions" element={<Solutionpage />} />
+          <Route path="/admin" element={<AdminPanel />} />
           {/* <Route path="/about" element={<About />} /> */}
         </Route>
       </Routes>

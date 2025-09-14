@@ -14,7 +14,7 @@ const ResourceBlogs: React.FC = () => {
 
   useEffect(() => {
     console.log("Fetching blogs...");
-    fetch("http://localhost:3000/blogs") // Adjust the URL as needed
+    fetch("http://localhost:3000/api/blogs") // Adjust the URL as needed
       .then((res) => res.json())
       .then((data) => {
         setBlogs(data);

@@ -16,7 +16,7 @@ export default function ResourcesPage() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <main>
         <HeroSection_Resources />
-        <ResourceReport partners={demoPartners} />
+        <ResourceReport  />
         <ResourceNews />
         <ResourcesBlogs />
         <ResourceAwards />

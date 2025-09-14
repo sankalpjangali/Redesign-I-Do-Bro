@@ -29,7 +29,7 @@ type ContentState = {
   Partnership_success: Partnership_success[];
 };
 
-const API_URL = "http://localhost:3000"; // your backend URL
+const API_URL = "https://backend-idobro.onrender.com"; // your backend URL
 
 const AdminPanel = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

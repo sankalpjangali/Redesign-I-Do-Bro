@@ -51,7 +51,7 @@ const Testimonials: React.FC = () => {
   // ]
 const [testimonials,setTestimonials] = useState([]);
 useEffect(() => {
-  fetch("http://localhost:3000/api/citizenship_stories")
+  fetch("https://backend-idobro.onrender.com/api/citizenship_stories")
     .then((res) => res.json())
     .then((data) => {
       console.log("Fetched Testimonials:", data);

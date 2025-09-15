@@ -22,7 +22,7 @@ const ServicesOverview: React.FC = () => {
 
   useEffect(() => {
     // Fetch data or perform any setup actions here
-    fetch("http://localhost:3000/api/citizenship_program").then((res)=>res.json().then((data)=>{
+    fetch("https://backend-idobro.onrender.com/api/citizenship_program").then((res)=>res.json().then((data)=>{
       console.log("Fetched Citizenship Programs:", data);
       setPrograms(data);
     }));

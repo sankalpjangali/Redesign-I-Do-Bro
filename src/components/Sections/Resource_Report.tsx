@@ -14,7 +14,7 @@ const ResourceReport: React.FC= () => {
   useEffect(() => {
     // Simulating an API call to fetch additional reports
     const fetchAdditionalReports = async () => {
-      const response = await fetch("http://localhost:3000/api/Reports"); // Adjust the URL as needed
+      const response = await fetch("https://backend-idobro.onrender.com/api/Reports"); // Adjust the URL as needed
       const data = await response.json();
       setAdditionalReports(data);
     };

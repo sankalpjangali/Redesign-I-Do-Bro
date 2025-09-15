@@ -451,7 +451,7 @@ const CaseStudiesSection: React.FC<{ projects: Project[] }> = ({ projects }) => 
 const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ project, onClose }) => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 0 }} 
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"

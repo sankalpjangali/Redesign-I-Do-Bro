@@ -13,7 +13,7 @@ const ResourceNews: React.FC = () => {
 
   useEffect(() => {
     const fetchNewsArticles = async () => {
-      const response = await fetch("http://localhost:3000/api/news");
+      const response = await fetch("https://backend-idobro.onrender.com/api/news");
       const data = await response.json();
       setNewsArticles(data);
     };

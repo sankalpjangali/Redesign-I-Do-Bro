@@ -16,7 +16,7 @@ const TeamSection: React.FC = () => {
   useEffect(() => {
     const fetchTeamMembers= async () =>{
       try {
-        const response = await fetch('http://localhost:3000/api/team');
+        const response = await fetch('https://backend-idobro.onrender.com/api/team');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

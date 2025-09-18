@@ -156,9 +156,9 @@ const HeroSection: React.FC = () => {
 
             {/* Call to Action */}
             <div className="mt-8 text-center">
-              <button className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-full font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300">
+              {/* <button className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-full font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300" onClick={() => window.location.href='/about#impact'}>
                 See Detailed Impact Report
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

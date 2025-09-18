@@ -88,16 +88,13 @@ const HeroSection: React.FC = () => {
               to solve the world's most pressing challenges.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 mb-12" onClick={() => window.location.href='/solutions'}>
               <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center group">
                 Explore Our Solutions
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </button>
               
-              <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-900 transition-all duration-300 flex items-center justify-center group">
-                <Play className="mr-2 h-5 w-5" />
-                Watch Our Impact
-              </button>
+              
             </div>
 
             {/* Partnership Tagline */}

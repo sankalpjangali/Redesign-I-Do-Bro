@@ -128,6 +128,7 @@ const PartnershipPage: React.FC = () => {
     const loadData = async () => {
       try {
         // Load partnership info
+        const url='https://redesign-i-do-bro.onrender.com/';
         const infoResponse = await fetch('/data/idobro_partnership_info.json');
         const infoData = await infoResponse.json();
         setPartnershipInfo(infoData);
@@ -136,16 +137,16 @@ const PartnershipPage: React.FC = () => {
         const modelData = await modelResponse.json();
         setPartnershipModel(modelData);
         // Load projects
-        const projectsResponse = await fetch('https://redesign-i-do-bro.onrender.com/partnership_success');
+        const projectsResponse = await fetch(`${url}/partnership_success`);
         console.log(projectsResponse);
         const projectsData = await projectsResponse.json();
         setProjects(projectsData.key_partnership_projects || []);
         // Load testimonials
-        const testimonialsResponse = await fetch('https://redesign-i-do-bro.onrender.com/partners_voice');
+        const testimonialsResponse = await fetch(`${url}/partners_voice`);
         const testimonialsData = await testimonialsResponse.json();
         setTestimonials(testimonialsData.testimonials || []);
         // Load partners
-        const partnersResponse = await fetch('https://redesign-i-do-bro.onrender.com/partners');
+        const partnersResponse = await fetch(`${url}/partners`);
         const partnersData = await partnersResponse.json();
         setPartners(partnersData.partners || []);
       } catch (error) {

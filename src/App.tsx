@@ -12,6 +12,8 @@ import PartnershipPage from './pages/partnership';
 import ResourcesPage from './pages/Resources';
 import Solutionpage from './pages/solution';
 import AdminPanel from './pages/admin_page';
+import About from './pages/About';
+
 function App() {
   useEffect(() => {
   AOS.init({
@@ -34,7 +36,7 @@ function App() {
           <Route path="/resources" element={<ResourcesPage />} />
           <Route path="/solutions" element={<Solutionpage />} />
           <Route path="/admin" element={<AdminPanel />} />
-          {/* <Route path="/about" element={<About />} /> */}
+          <Route path="/about" element={<About />} />
         </Route>
       </Routes>
     </BrowserRouter>

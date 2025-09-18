@@ -14,7 +14,7 @@ export default function Home() {
     <ImpactSection />
     <TeamSection />
     {/* <ResourcesSection /> */}
-    <ContactSection />
+    {/* <ContactSection /> */}
     </>
   );
 }

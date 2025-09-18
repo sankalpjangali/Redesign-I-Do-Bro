@@ -256,10 +256,10 @@ const ImpactSection: React.FC = () => {
             social impact across communities worldwide.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-200">
+            <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-200" onClick={() => window.location.href='https://res.cloudinary.com/dhs64xefe/image/upload/v1754927184/idobro3_jvopmq.pdf'}>
               Download Impact Report
             </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-200">
+            <button className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-200" onClick={() => window.location.href='/contact'}>
               Partner with Us
             </button>
           </div>

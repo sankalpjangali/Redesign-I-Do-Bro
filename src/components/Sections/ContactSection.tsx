@@ -20,26 +20,42 @@ const ContactSection: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        organization: '',
-        interest: '',
-        message: ''
-      });
-    }, 3000);
+  const handleNewsletterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewsletterEmail(e.target.value);
   };
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+  try {
+    const response = await fetch("http://localhost:3000/admin/doPost", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: { "Content-Type": "application/json" }
+    });
+
+    const result = await response.json();
+    if (result.result === "success") {
+      setIsSubmitted(true);
+
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: '',
+          email: '',
+          organization: '',
+          interest: '',
+          message: ''
+        });
+      }, 3000);
+    }
+  } catch (error) {
+    console.error("Error submitting form:", error);
+  }
+};
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Newsletter subscription:', newsletterEmail);
     setIsNewsletterSubmitted(true);

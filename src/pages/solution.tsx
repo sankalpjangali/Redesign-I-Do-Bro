@@ -70,19 +70,7 @@ const PartnershipPage: React.FC = () => {
                 </p>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-md">
-                <div className="flex items-center mb-4">
-                  <div className="bg-orange-100 rounded-full p-3 mr-4">
-                    <Award className="h-6 w-6 text-orange-600" />
-                  </div>
-                  <h4 className="text-xl font-bold text-gray-900">
-                    Ownership
-                  </h4>
-                </div>
-                <p className="text-gray-600">
-                  Encouraging individuals and organizations to take responsibility and drive action for sustainable development.
-                </p>
-              </div>
+            
             </div>
           </div>
         </div>

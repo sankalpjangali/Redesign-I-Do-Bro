@@ -27,7 +27,8 @@ const SolutionsSection: React.FC = () => {
         primaryLabel: 'Students Sensitized',
         secondary: '500+',
         secondaryLabel: 'Event Days'
-      }
+      },
+      direct: '/citizenship'
     },
     {
       id: 'entrepreneurship',
@@ -53,7 +54,8 @@ const SolutionsSection: React.FC = () => {
         primaryLabel: 'Entrepreneurs Supported',
         secondary: '$1M+',
         secondaryLabel: 'Sales Generated'
-      }
+      },
+      direct: '/entrepreneurship'
     },
     {
       id: 'partnership',
@@ -79,65 +81,14 @@ const SolutionsSection: React.FC = () => {
         primaryLabel: 'Global Partners',
         secondary: '7',
         secondaryLabel: 'Countries'
-      }
+      },
+      direct: '/partnership'
     }
   ];
 
   return (
     <section id="solutions" className="py-20 bg-gray-50 overflow-hidden">
-      {/* PECO-SYSTEM Framework */}
-        <div className="bg-white rounded-2xl p-8 shadow-lg" data-aos="fade-up">
-          <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">
-              The PECO-SYSTEM Framework
-            </h3>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our holistic approach integrates People, Environment, Community, and Organization 
-              to create sustainable impact ecosystems.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="bg-purple-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <Heart className="h-8 w-8 text-purple-600" />
-              </div>
-              <h4 className="font-bold text-gray-900 mb-2">Partners</h4>
-              <p className="text-sm text-gray-600">
-                 Emphasizing collaboration across various sectors (government, corporations, NGOs, academia, local communities).
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="bg-green-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <Globe className="h-8 w-8 text-green-600" />
-              </div>
-              <h4 className="font-bold text-gray-900 mb-2">Entrepreneurs</h4>
-              <p className="text-sm text-gray-600">
-                Supporting social and green enterprises, including women entrepreneurs.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <Users className="h-8 w-8 text-blue-600" />
-              </div>
-              <h4 className="font-bold text-gray-900 mb-2">Citizens</h4>
-              <p className="text-sm text-gray-600">
-                Fostering individual participation and ownership in creating a better world.              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="bg-orange-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <Building className="h-8 w-8 text-orange-600" />
-              </div>
-              <h4 className="font-bold text-gray-900 mb-2">Ownership</h4>
-              <p className="text-sm text-gray-600">
-                  Encouraging individuals and organizations to take responsibility and drive action for sustainable development.
-              </p>
-            </div>
-          </div>
-        </div>
+      
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -223,7 +174,7 @@ const SolutionsSection: React.FC = () => {
     </div>
 
     {/* CTA Button → stays pinned at bottom */}
-    <button className={`mt-auto w-full bg-gradient-to-r ${solution.gradientFrom} ${solution.gradientTo} text-white py-3 px-6 rounded-full font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center group`}>
+    <button onClick={() => window.location.href=solution.direct} className={`mt-auto w-full bg-gradient-to-r ${solution.gradientFrom} ${solution.gradientTo} text-white py-3 px-6 rounded-full font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center group`}>
       Learn More
       <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
     </button>

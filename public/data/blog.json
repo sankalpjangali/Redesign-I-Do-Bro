@@ -1,0 +1,19 @@
+[
+    {
+      "id": 1,
+      "title": "How to Build a Blog in React",
+      "description": "Learn how to dynamically render blog content using React and TypeScript.",
+      "author": "John Doe",
+      "imageUrl": "/images/citizenship/hero-background.jpg",
+      "link": "#"
+    },
+    {
+      "id": 2,
+      "title": "Advanced Tailwind CSS Tips",
+      "description": "Speed up your UI development with these Tailwind best practices.",
+      "author": "Jane Smith",
+      "imageUrl": "/images/citizenship/blog2.jpg",
+      "link": "#"
+    }
+  ]
+  

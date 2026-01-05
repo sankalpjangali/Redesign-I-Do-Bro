@@ -1,0 +1,27 @@
+[{
+       "id":1,
+      "name": "Elena Martinez",
+      "designation": "Senior Immigration Attorney",
+      "image_url": "/images/citizenship/team-member-1.jpg",
+      "experience": "15+ years",
+      "email": "elena@idobro.com",
+      "linkedin_url": "#"
+    },
+    {
+      "id": 2,
+      "name": "David Thompson",
+      "designation": "Head of Client Relations",
+      "image_url": "/images/citizenship/team-member-2.jpg",
+      "experience": "12+ years",
+      "email": "david@idobro.com",
+      "linkedin_url": "#"
+      },
+    {
+      "id": 3,
+      "name": "Dr. Sarah Chen",
+      "designation": "Legal Director",
+      "image_url": "/images/citizenship/success-story.jpg",
+      "experience": "18+ years",
+      "email": "sarah@idobro.com",
+      "linkedin_url": "#"
+    }]

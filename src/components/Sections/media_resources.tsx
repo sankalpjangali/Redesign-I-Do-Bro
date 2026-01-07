@@ -15,7 +15,7 @@ export default function MediaShowcase({ data }) {
         title: 'Product Launch 2025',
         description: 'Watch our latest product unveiling and discover groundbreaking features',
         thumbnail: 'https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=800&h=450&fit=crop',
-        duration: '12:34',
+        duration: '12:34',  
         views: '15K',
         date: 'Oct 20, 2025'
       },

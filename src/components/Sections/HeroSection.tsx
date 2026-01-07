@@ -83,7 +83,7 @@ export default function HeroCarousel() {
               onClick={() => (window.location.href = "/solutions")}
               className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center group"
             >
-              Explore Our Solutions
+              Explore Our Verticals 
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </button>
 

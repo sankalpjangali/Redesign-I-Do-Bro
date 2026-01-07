@@ -8,8 +8,9 @@ const Header: React.FC = () => {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
+    
     {
-      name: 'Solutions',
+      name: 'Verticals',
       submenu: [
         { name: 'Entrepreneurship', href: '/entrepreneurship' },
         { name: 'Citizenship', href: '/citizenship' },
@@ -17,9 +18,23 @@ const Header: React.FC = () => {
       ],
     },
     {
+      name: 'Offerings',
+      href:'/offerings',
+      // submenu: [
+      //   { name: 'Entrepreneurship', href: '/entrepreneurship' },
+      //   { name: 'Citizenship', href: '/citizenship' },
+      //   { name: 'Partnership', href: '/partnership' },
+      // ],
+    },
+    {
       name: 'Resources',
       href: '/resources',
     },
+    {
+      name: 'Flagships',
+      href: '/flagships',
+    },
+    { name: 'Case Studies', href: '/caseStudies' },
     { name: 'Contact', href: '/contact' },
   ];
 

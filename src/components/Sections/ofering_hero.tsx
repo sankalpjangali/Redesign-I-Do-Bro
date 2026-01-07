@@ -286,31 +286,7 @@ const OfferingsPage: React.FC = () => {
         </div>
       </section> */}
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-        <div 
-          className={`container mx-auto px-6 text-center transition-all duration-1000 ${
-            visibleElements.has(14) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-          data-animate
-          data-index="14"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Create Impact?
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Partner with us to multiply opportunities and create sustainable solutions for people and planet
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="px-8 py-4 bg-white text-purple-600 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors duration-300 shadow-lg">
-              Get in Touch
-            </button>
-            <button className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white hover:text-purple-600 transition-colors duration-300">
-              Learn More
-            </button>
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 };

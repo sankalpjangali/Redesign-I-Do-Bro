@@ -117,6 +117,7 @@ const OfferingsSupportTable: React.FC = () => {
   ];
 
   return (
+    <>
     <div className="min-h-screen bg-white py-16 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
@@ -181,8 +182,10 @@ const OfferingsSupportTable: React.FC = () => {
           </table>
         </div>
       </div>
-            {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+      
+    </div>
+          {/* CTA Section */}
+      <section className="py-20 w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white">
         <div 
           className={`container mx-auto px-6 text-center transition-all duration-1000 ${
             visibleElements.has(14) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -206,7 +209,7 @@ const OfferingsSupportTable: React.FC = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

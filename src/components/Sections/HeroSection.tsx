@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
+import { link } from "fs";
 
 const slides = [
   {
@@ -11,6 +12,8 @@ const slides = [
       "Human-Centric Solutions through systems approach and people-powered innovations to solve the world's most pressing challenges.",
     image:
       "https://res.cloudinary.com/dhs64xefe/image/upload/v1757831861/Website_Homepage_Images_25_vytt6j.png",
+    button:"Verticals",
+    link:'solutions'
   },
   {
     id: 2,
@@ -20,6 +23,8 @@ const slides = [
       "Connecting ideas and people to co-create sustainable development across the globe.",
     image:
       "https://res.cloudinary.com/dhs64xefe/image/upload/v1757831860/Website_Homepage_Images_22_jbyoap.png",
+      button:"offeerings",
+     link: 'offerings'
   },
   {
     id: 3,
@@ -29,6 +34,8 @@ const slides = [
       "Building inclusive systems that ensure growth, dignity, and peace for all.",
     image:
       "https://res.cloudinary.com/dhs64xefe/image/upload/v1757831861/Website_Homepage_Images_23_fghr6l.png",
+    button:"flagships",
+    link: 'flagships'
   },
 ];
 
@@ -80,10 +87,10 @@ export default function HeroCarousel() {
             </p>
 
             <button
-              onClick={() => (window.location.href = "/solutions")}
+              onClick={() => (window.location.href = `/${slides[current].link}`)}
               className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center group"
             >
-              Explore Our Verticals 
+              Explore Our {slides[current].button}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </button>
 

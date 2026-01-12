@@ -12,10 +12,11 @@ import PartnershipPage from './pages/partnership';
 import ResourcesPage from './pages/Resources';
 import Solutionpage from './pages/solution';
 import AdminPanel from './pages/admin_page';
-import About from './pages/About';
+import ImpactJourneyPage from './pages/About';
 import Offerings from './pages/offering';
 import CaseStudiesPage from './pages/case_studies';
 import FlagshipInitiativesPage from './pages/flagship';
+import AmplificationOutreach from './components/Sections/Aplication_outreach';
 function App() {
   useEffect(() => {
   // AOS.init({
@@ -36,12 +37,13 @@ function App() {
           <Route path="/citizenship" element={<CitizenshipApp />} />
           <Route path="/flagships" element={< FlagshipInitiativesPage/>} />
           <Route path="/offerings" element={<Offerings />} />
+          <Route path="/offerings/:id" element={< AmplificationOutreach/>} />
           <Route path="/caseStudies" element={<CaseStudiesPage />} />
           <Route path="/partnership" element={<PartnershipPage />} />
           <Route path="/resources" element={<ResourcesPage />} />
           <Route path="/solutions" element={<Solutionpage />} />
           <Route path="/admin" element={<AdminPanel />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<ImpactJourneyPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

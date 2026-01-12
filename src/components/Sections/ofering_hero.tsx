@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 const IntegratedOfferings: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
@@ -9,6 +12,7 @@ const IntegratedOfferings: React.FC = () => {
 
   const offerings = [
     {
+      id:1,
       icon: '📢',
       bgColor: 'bg-blue-50',
       iconBg: 'bg-blue-100',
@@ -26,6 +30,7 @@ const IntegratedOfferings: React.FC = () => {
       delay: 'delay-0'
     },
     {
+      id:2,
       icon: '🎓',
       bgColor: 'bg-purple-50',
       iconBg: 'bg-purple-100',
@@ -43,6 +48,7 @@ const IntegratedOfferings: React.FC = () => {
       delay: 'delay-100'
     },
     {
+      id:3,
       icon: '🔬',
       bgColor: 'bg-teal-50',
       iconBg: 'bg-teal-100',
@@ -61,6 +67,7 @@ const IntegratedOfferings: React.FC = () => {
       delay: 'delay-200'
     },
     {
+      id:4,
       icon: '💡',
       bgColor: 'bg-amber-50',
       iconBg: 'bg-amber-100',
@@ -146,9 +153,10 @@ const IntegratedOfferings: React.FC = () => {
                   <span className="text-sm text-gray-600 italic">{offering.support}</span>
                 </div>
               </div>
-
+              
               {/* Button */}
               <button
+              onClick={() => navigate(`/offerings/${offering.id}`)}
                 className={`${offering.buttonColor} text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-md`}
               >
                 {offering.buttonText} →

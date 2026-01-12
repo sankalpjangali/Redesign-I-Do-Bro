@@ -1,395 +1,274 @@
 import React from 'react';
-import './About.css';
+import { Users, Briefcase, Handshake, Award, Globe, TrendingUp } from 'lucide-react';
 
-// Type definitions
-interface TeamMember {
-  name: string;
-  title: string;
-  experience: string;
-  email: string;
-  linkedin?: string;
-}
-
-interface StatItem {
-  number: string;
-  label: string;
-}
-
-interface TimelineItem {
-  year: string;
-  title: string;
-  description: string;
-}
-
-interface Office {
-  city: string;
-  country: string;
-  type: string;
-  address: string;
-}
-
-interface ValueItem {
-  icon: string;
-  title: string;
-  description: string;
-}
-
-interface PECOItem {
-  letter: string;
-  title: string;
-  description: string;
-}
-
-const About: React.FC = () => {
-  // Data
-  const teamMembers: TeamMember[] = [
-    {
-      name: "David Thompson",
-      title: "Head of Client Relations",
-      experience: "12+ years experience",
-      email: "david@idobro.com"
-    },
-    {
-      name: "Elena Martinez",
-      title: "Senior Immigration Attorney",
-      experience: "15+ years experience",
-      email: "elena@idobro.com"
-    },
-    {
-      name: "Dr. Sarah Chen",
-      title: "Legal Director",
-      experience: "18+ years experience",
-      email: "sarah@idobro.com"
-    },
-    {
-      name: "Sankalp",
-      title: "Innovation Lead",
-      experience: "3+ years experience",
-      email: "ss@gmail.com"
-    },
-    {
-      name: "Ankita",
-      title: "Program Manager",
-      experience: "2+ years experience",
-      email: "jangalisankalp@gmail.com"
-    }
-  ];
-
-  const stats: StatItem[] = [
-    { number: "7", label: "Countries Reached" },
-    { number: "24", label: "Indian States" },
-    { number: "1M+", label: "Lives Impacted" },
-    { number: "40+", label: "Strategic Partners" },
-    { number: "250K+", label: "Students Sensitized" },
-    { number: "5K+", label: "Entrepreneurs Supported" }
-  ];
-
-  const timeline: TimelineItem[] = [
-    {
-      year: "2008",
-      title: "Foundation",
-      description: "Idobro Impact Solutions was founded with a vision to create sustainable change through human-centric approaches."
-    },
-    {
-      year: "2012",
-      title: "Framework Development",
-      description: "Developed the PECO-SYSTEM framework, integrating People, Environment, Community, and Organization for holistic impact."
-    },
-    {
-      year: "2016",
-      title: "Global Expansion",
-      description: "Expanded operations internationally, establishing offices in Sweden and the United Kingdom."
-    },
-    {
-      year: "2020",
-      title: "Digital Transformation",
-      description: "Adapted to global challenges by leveraging digital platforms to continue our impact during the pandemic."
-    },
-    {
-      year: "2024",
-      title: "Milestone Achievement",
-      description: "Reached 1M+ lives impacted across 7 countries, with 250K+ students sensitized and 5K+ entrepreneurs supported."
-    }
-  ];
-
-  const offices: Office[] = [
-    {
-      city: "Mumbai",
-      country: "India",
-      type: "Headquarters",
-      address: "Corporate Office, Mumbai, Maharashtra, India"
-    },
-    {
-      city: "Stockholm",
-      country: "Sweden",
-      type: "Regional Office",
-      address: "European Operations, Stockholm, Sweden"
-    },
-    {
-      city: "London",
-      country: "United Kingdom",
-      type: "Regional Office",
-      address: "UK Operations, London, United Kingdom"
-    }
-  ];
-
-  const countries: string[] = [
-    "India", "Sweden", "United Kingdom", "USA", "Canada", "Australia", "Singapore"
-  ];
-
-  const riseValues: ValueItem[] = [
-    {
-      icon: "🤝",
-      title: "Responsible",
-      description: "We take ownership of our actions and their impact on society and the environment, ensuring accountability in all our endeavors."
-    },
-    {
-      icon: "🌍",
-      title: "Inclusive",
-      description: "We embrace diversity and ensure that our solutions benefit all stakeholders, leaving no one behind in our journey toward progress."
-    },
-    {
-      icon: "♻️",
-      title: "Sustainable",
-      description: "We create solutions that meet present needs while preserving resources and opportunities for future generations."
-    },
-    {
-      icon: "🌱",
-      title: "Eco-friendly",
-      description: "We consider the broader ecosystem impact of our actions, promoting harmony between human development and environmental preservation."
-    }
-  ];
-
-  const pecoFramework: PECOItem[] = [
-    {
-      letter: "P",
-      title: "Partners",
-      description: "Emphasizing collaboration across various sectors including government, corporations, NGOs, academia, and local communities to create synergistic solutions."
-    },
-    {
-      letter: "E",
-      title: "Entrepreneurs",
-      description: "Supporting social and green enterprises, with special focus on women entrepreneurs, providing them with platforms and resources to scale their impact."
-    },
-    {
-      letter: "C",
-      title: "Citizens",
-      description: "Fostering individual participation and ownership in creating a better world, empowering citizens to become active changemakers in their communities."
-    },
-  ];
-
-  // Navigation component
-  
-
-  // Hero component
-  const Hero: React.FC = () => (
-    <section className="hero">
-      <div className="container">
-        <h1>About Idobro</h1>
-        <p>Multiply Your Impact Through Human-Centric Solutions for Purpose, Profit & Peace</p>
-      </div>
-    </section>
-  );
-
-  // Stats component
-  const StatsGrid: React.FC<{ stats: StatItem[] }> = ({ stats }) => (
-    <div className="stats-grid">
-      {stats.map((stat, index) => (
-        <div key={index} className="stat-card">
-          <div className="stat-number">{stat.number}</div>
-          <div className="stat-label">{stat.label}</div>
-        </div>
-      ))}
-    </div>
-  );
-
-  // Team component
-  const TeamGrid: React.FC<{ members: TeamMember[] }> = ({ members }) => (
-    <div className="team-grid">
-      {members.map((member, index) => (
-        <div key={index} className="team-card">
-          <div className="team-info">
-            <div className="team-name">{member.name}</div>
-            <div className="team-title">{member.title}</div>
-            <div className="team-experience">{member.experience}</div>
-            <a href={`mailto:${member.email}`} className="team-email">
-              {member.email}
-            </a>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-
-  // Timeline component
-  const Timeline: React.FC<{ items: TimelineItem[] }> = ({ items }) => (
-    <div className="timeline">
-      {items.map((item, index) => (
-        <div key={index} className="timeline-item">
-          <div className="timeline-year">{item.year}</div>
-          <h4>{item.title}</h4>
-          <p>{item.description}</p>
-        </div>
-      ))}
-    </div>
-  );
-
-  // Values component
-  const ValuesGrid: React.FC<{ values: ValueItem[] }> = ({ values }) => (
-    <div className="values-grid">
-      {values.map((value, index) => (
-        <div key={index} className="value-card">
-          <h4>{value.icon} {value.title}</h4>
-          <p>{value.description}</p>
-        </div>
-      ))}
-    </div>
-  );
-
-  // PECO component
-  const PECOGrid: React.FC<{ items: PECOItem[] }> = ({ items }) => (
-    <div className="peco-grid">
-      {items.map((item, index) => (
-        <div key={index} className="peco-card">
-          <div className="peco-icon">{item.letter}</div>
-          <h4>{item.title}</h4>
-          <p>{item.description}</p>
-        </div>
-      ))}
-    </div>
-  );
-
-  // Main component return
+const ImpactJourneyPage: React.FC = () => {
   return (
-    <div className="about-page">
-      
-      <Hero />
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <div className="max-w-6xl mx-auto px-6 py-16">
+        <div className="flex gap-4 mb-8">
+          <button className="px-4 py-2 bg-purple-100 text-purple-700 rounded-md text-sm font-medium">
+            Founded: 2009
+          </button>
+          <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-md text-sm">
+            HQ: Bangalore, India
+          </button>
+          <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-md text-sm">
+            Social Reach: 57 countries
+          </button>
+        </div>
 
-      <main className="main-content container">
-        {/* Company Story */}
-        <section className="section">
-          <h2>Our Story</h2>
-          <div className="two-column">
-            <div>
-              <p className="large-text">
-                For over 16 years, Idobro Impact Solutions has been at the forefront of creating meaningful change through human-centric solutions. We believe that the world's most pressing challenges require a paradigm shift in mindset and action, with broad-based participation from all stakeholders.
-              </p>
-              <p className="medium-text">
-                Our journey began with a simple yet powerful idea: that sustainable development can only be achieved when we consider ecosystem-wide consequences while being contextualised to local requirements. Today, we operate across 7 countries and 24 Indian states, transforming lives and communities through our innovative approach.
-              </p>
-              <p className="medium-text">
-                We employ a systems approach and people-powered innovations to solve global challenges, always keeping human dignity and empowerment at the center of everything we do.
-              </p>
-            </div>
-            <div>
-              <img 
-                src="https://res.cloudinary.com/dhs64xefe/image/upload/v1757831861/Website_Homepage_Images_25_vytt6j.png" 
-                alt="Idobro Impact" 
-                className="story-image"
-              />
-            </div>
+        <h1 className="text-4xl font-bold text-gray-900 mb-6">
+          Measure and multiply the socio-environmental impact of<br />
+          businesses, funds, and citizen action networks
+        </h1>
+
+        <p className="text-gray-600 leading-relaxed mb-8 max-w-4xl">
+          We've catalyzed systemic change through a three-layer approach that creates momentum for all. 
+          We connect to stakeholder eco-systems and collaborations that benefit society and 
+          the planet. Through our action-first/tech-enabled approach, we have built pioneering 
+          measurement frameworks and mobilized over $1B to deliver impact at scale.
+        </p>
+
+        <p className="text-gray-600 leading-relaxed mb-12 max-w-4xl">
+          Our unique approach combines proper tracking, community ownership, and impact creation 
+          in every effort we undertake. We advance transparency across global efforts, ensuring 
+          we deliver for isolated efforts-they impact coordinated, multi-stakeholder mobilization.
+        </p>
+
+        <div className="flex gap-12">
+          <div className="flex items-center gap-3">
+            <Users className="w-5 h-5 text-purple-600" />
+            <span className="text-gray-700">15 years of advisory</span>
           </div>
-        </section>
-
-        {/* Mission & Vision */}
-        <section className="section">
-          <h2>Our Mission & Vision</h2>
-          <div className="mission-vision">
-            <div className="card">
-              <h4>🎯 Our Mission</h4>
-              <p>Build value-based ecosystems through stakeholder engagement for Purpose, Profit and Peace</p>
-            </div>
-            <div className="card">
-              <h4>🌟 Our Vision</h4>
-              <p>A Shared World driven by the RISE values - Responsible, Inclusive, Sustainable and Eco(system) friendly</p>
-            </div>
+          <div className="flex items-center gap-3">
+            <TrendingUp className="w-5 h-5 text-purple-600" />
+            <span className="text-gray-700">240+ individuals reached</span>
           </div>
-        </section>
-
-        {/* RISE Values */}
-        <section className="section">
-          <h2>Our RISE Values</h2>
-          <p className="section-description">
-            These core values drive our vision and mission, guiding every decision and action we take.
-          </p>
-          <ValuesGrid values={riseValues} />
-        </section>
-
-        {/* PECO-SYSTEM Framework */}
-        <section className="section">
-          <h2>The PECO-SYSTEM Framework</h2>
-          <p className="section-description">
-            Our holistic approach integrates People, Environment, Community, and Organization to create sustainable impact ecosystems.
-          </p>
-          <PECOGrid items={pecoFramework} />
-        </section>
-
-        {/* Global Impact */}
-        <section className="section">
-          <h2>Our Global Impact</h2>
-          <p className="section-description">
-            Over 16+ years, we've created measurable impact across multiple continents and communities.
-          </p>
-          <StatsGrid stats={stats} />
-        </section>
-
-        {/* Global Presence */}
-        <section className="section">
-          <h2>Our Global Presence</h2>
-          <div className="two-column">
-            <div>
-              <h3>🌏 International Offices</h3>
-              <div className="offices-list">
-                {offices.map((office, index) => (
-                  <div key={index} className="office-item">
-                    <strong>{office.city}, {office.country} ({office.type})</strong><br />
-                    {office.address}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3>🗺️ Countries We Serve</h3>
-              <div className="countries-list">
-                {countries.map((country, index) => (
-                  <span key={index} className="country-tag">{country}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Leadership Team */}
-        <section className="section">
-          <h2>Our Leadership Team</h2>
-          <p className="section-description">
-            Meet the passionate leaders driving our mission forward across the globe.
-          </p>
-          <TeamGrid members={teamMembers} />
-        </section>
-
-        {/* Company Timeline */}
-        <section className="section">
-          <h2>Our Journey</h2>
-          <Timeline items={timeline} />
-        </section>
-      </main>
-
-      {/* CTA Section */}
-      <section className="cta-section">
-        <div className="container">
-          <h2>Ready to Create Impact Together?</h2>
-          <p className="cta-description">
-            Join our network of partners and changemakers who are driving sustainable social impact across communities worldwide.
-          </p>
-          <div className="cta-buttons">
-            <a href="/contact" className="btn btn-primary">Partner with Us</a>
-            <a href="#" className="btn btn-secondary">Download Impact Report</a>
+          <div className="flex items-center gap-3">
+            <Award className="w-5 h-5 text-purple-600" />
+            <span className="text-gray-700">72 cohorts active</span>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Timeline Section */}
+      <div className="bg-gray-50 py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex items-start gap-8 mb-8">
+            <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center flex-shrink-0">
+              <div className="w-3 h-3 rounded-full bg-white"></div>
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">Our Journey</h2>
+              <p className="text-gray-600">
+                Over the years, we've grown our impact. Here are a few highlights in a multi-year journey.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative ml-4 border-l-2 border-gray-300">
+            {[
+              { year: '2013', text: 'First international corporate partnership. Collaborated with...' },
+              { year: '2015', text: 'RISE Shared Measurement launched – 1,000 entrepreneurs from...' },
+              { year: '2018', text: 'UN SDG Results accelerated social work – 5800+ entrepreneurs measured impact...' },
+              { year: '2021', text: 'World Economic Forum launched Report – Systems Analysis Methodology created...' },
+              { year: '2024', text: 'International partnerships advanced – 240+ partnerships globally...' }
+            ].map((item, idx) => (
+              <div key={idx} className="ml-8 mb-8 flex gap-6">
+                <div className="text-purple-700 font-bold text-lg w-16 flex-shrink-0">{item.year}</div>
+                <div className="flex-1">
+                  <div className="flex items-start gap-2">
+                    <div className="w-2 h-2 rounded-full bg-purple-600 mt-2 flex-shrink-0"></div>
+                    <p className="text-gray-700">{item.text}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* RISE Values Section */}
+      <div className="max-w-6xl mx-auto px-6 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">RISE Values: Our Core Philosophy</h2>
+          <p className="text-gray-600 max-w-3xl mx-auto">
+            Everything we do is guided by RISE: our core principles that ensure each action is 
+            impactful, inclusive, sustainable, and environmentally coherent.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <Users className="w-6 h-6 text-purple-600" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Responsible</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Integrity and transparency are at the heart of our work. We maintain accountability and ethical rigor in all our actions. We commit fully to responsible management, ensuring fair treatment of all stakeholders and complete transparency in our operations. We actively report our progress in a consistent manner and welcome scrutiny.
+            </p>
+          </div>
+
+          <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+              <Globe className="w-6 h-6 text-green-600" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Inclusive</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              We advocate for fair representation and participation. Our work ensures that marginalized voices are heard and that equity is central to everything we do. We work to lift up voices that need amplification, creating meaningful management ecosystems. We advocate for diverse perspectives and collaborative decision-making.
+            </p>
+          </div>
+
+          <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+              <TrendingUp className="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Sustainable</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              We believe in building for lasting change. Our work is intentionally structured to create value that is greater than short-term gains. We deploy systematic frameworks and long-term partnerships that endure beyond individual projects. We build capacity for communities to adapt and evolve with changing needs.
+            </p>
+          </div>
+
+          <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+              <Award className="w-6 h-6 text-orange-600" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Eco-friendly</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Environmental stewardship guides every stage of our work. We are committed to accountability for our impacts on climate, biodiversity and other environmental factors. We integrate environmental considerations into all our decisions. We promote regenerative practices that heal and restore our natural systems.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Three-Layer Approach Section */}
+      <div className="bg-gray-50 py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Our Three-Layer Approach to Systemic Change
+            </h2>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              We address complex global problems at three interconnected levels, creating 
+              momentum for real systems change.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="bg-white border border-gray-200 rounded-lg p-6">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                <Users className="w-6 h-6 text-green-600" />
+              </div>
+              <div className="text-sm text-green-600 font-semibold mb-2">INDIVIDUAL LEVEL</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Citizenship</h3>
+              <p className="text-gray-700 font-medium mb-3">
+                Individual awareness + participation + engaged citizenship + action
+              </p>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Example: RISE community members collaborate and engage in sustainability actions 
+                (carbon footprint reduction, volunteerism, regenerative practices) and receive impact-first...
+              </p>
+            </div>
+
+            <div className="bg-white border border-gray-200 rounded-lg p-6">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <Briefcase className="w-6 h-6 text-purple-600" />
+              </div>
+              <div className="text-sm text-purple-600 font-semibold mb-2">ORGANIZATIONAL LEVEL</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Entrepreneurship</h3>
+              <p className="text-gray-700 font-medium mb-3">
+                Transparency and tech-first processes + sustained data-led action
+              </p>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Example: Social enterprises use RISE Shared Measurement to analyze their work with 
+                actionable data. They are equipped with collaborative, research-led strategy...
+              </p>
+            </div>
+
+            <div className="bg-white border border-gray-200 rounded-lg p-6">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <Handshake className="w-6 h-6 text-blue-600" />
+              </div>
+              <div className="text-sm text-blue-600 font-semibold mb-2">ECOSYSTEM LEVEL</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Partnership</h3>
+              <p className="text-gray-700 font-medium mb-3">
+                Structures of aligned stakeholders create systemic change
+              </p>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Example: Regional ecosystem partners (donors, accelerators, NGO networks, universities, 
+                foundations, governments, etc.) bring systemic insights...
+              </p>
+            </div>
+          </div>
+
+          <p className="text-center text-gray-600 text-sm max-w-4xl mx-auto">
+            These three layers reinforce each other. Engaged citizens support entrepreneurs. Entrepreneurs 
+            inform investment. Partnerships enable scale. Together, they create systemic, sustained impact.
+          </p>
+        </div>
+      </div>
+
+      {/* Global Recognition Section */}
+      <div className="max-w-6xl mx-auto px-6 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Global Recognition & Validation
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="border border-gray-200 rounded-lg p-6">
+            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <Award className="w-6 h-6 text-purple-600" />
+            </div>
+            <div className="text-sm text-purple-600 font-semibold mb-2">2018 AWARDED</div>
+            <h3 className="text-lg font-bold text-gray-900 mb-3">UN DESA+ Promoting Finalist</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              UN DESA+ Best Practice Award finalist: Selected as a promising approach for SDG implementation 
+              in 'Localizing in Action' category. Recognized for systematic and innovative approach...
+            </p>
+          </div>
+
+          <div className="border border-gray-200 rounded-lg p-6">
+            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <Globe className="w-6 h-6 text-purple-600" />
+            </div>
+            <div className="text-sm text-purple-600 font-semibold mb-2">2020 AWARDED</div>
+            <h3 className="text-lg font-bold text-gray-900 mb-3">World Benchmarking Alliance</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              As part of a WBA grant to advancing the transformative framework for Corporate Human Rights 
+              Benchmark metrics. Recognized for building integrated solutions...
+            </p>
+          </div>
+
+          <div className="border border-gray-200 rounded-lg p-6">
+            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <TrendingUp className="w-6 h-6 text-purple-600" />
+            </div>
+            <div className="text-sm text-purple-600 font-semibold mb-2">2021 MILESTONE</div>
+            <h3 className="text-lg font-bold text-gray-900 mb-3">Catalyst 2030</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Founding Member of Catalyst 2030. Led collaborative work across communities and impact 
+              leaders. Actively engaged shared learning and resource mobilization...
+            </p>
+          </div>
+
+          <div className="border border-gray-200 rounded-lg p-6">
+            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <Handshake className="w-6 h-6 text-purple-600" />
+            </div>
+            <div className="text-sm text-purple-600 font-semibold mb-2">2022 PARTNERSHIP</div>
+            <h3 className="text-lg font-bold text-gray-900 mb-3">International Partnerships</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Strategic partnerships with global institutions including UN Women, UNDP, UN Women, and 
+              UNESCO. Collaborating for systemic impact...
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default About;
+export default ImpactJourneyPage;

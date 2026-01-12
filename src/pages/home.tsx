@@ -12,7 +12,7 @@ export default function Home() {
     <>
     {/* <AllInOneBlogBuilder /> */}
     <HeroSection />
-    <TickerDemo />
+    {/* <TickerDemo /> */}
     <AboutSection />
     <SolutionsSection />
     <ImpactSection />

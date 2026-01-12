@@ -5,18 +5,22 @@ import ImpactSection from '../components/Sections/ImpactSection';
 import ResourcesSection from '../components/Sections/ResourcesSection';
 import ContactSection from '../components/Sections/ContactSection';
 import TeamSection from '../components/Sections/TeamSection';
-import TickerDemo from '@/components/Sections/ticker';
+import CollaborativeSolutions from '@/components/Sections/collaborative_solution';
 import AllInOneBlogBuilder from '@/components/Sections/admin_blog';
+import MultiplierModel from '@/components/Sections/I_5'
+import OfferingsPage from "@/components/Sections/ofering_hero";
 export default function Home() {
   return (
     <>
     {/* <AllInOneBlogBuilder /> */}
     <HeroSection />
-    {/* <TickerDemo /> */}
+    <CollaborativeSolutions />
+     <MultiplierModel /> 
+    <OfferingsPage></OfferingsPage>
     <AboutSection />
-    <SolutionsSection />
+    {/* <SolutionsSection /> */}
     <ImpactSection />
-    <TeamSection />
+    {/* <TeamSection /> */}
     {/* <ResourcesSection /> */}
     {/* <ContactSection /> */}
     </>

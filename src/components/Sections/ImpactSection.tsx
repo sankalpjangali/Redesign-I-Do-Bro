@@ -107,50 +107,7 @@ const ImpactSection: React.FC = () => {
   return (
     <section id="impact" className="py-20 bg-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Our
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">
-              Social Impact
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Discover how our systematic approach and strategic partnerships have created 
-            measurable, sustainable change in communities across 7 countries and 24 Indian states.
-          </p>
-        </div>
 
-        {/* Impact Metrics Dashboard */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-20">
-          {impactMetrics.map((category, index) => {
-            const IconComponent = category.icon;
-            return (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="flex items-center mb-6">
-                  <div className={`bg-${category.color}-100 rounded-full p-3 mr-4`}>
-                    <IconComponent className={`h-6 w-6 text-${category.color}-600`} />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900">{category.category}</h3>
-                </div>
-                
-                <div className="space-y-4">
-                  {category.metrics.map((metric, metricIndex) => (
-                    <div key={metricIndex} className="flex justify-between items-center">
-                      <div>
-                        <div className="text-2xl font-bold text-gray-900">{metric.value}</div>
-                        <div className="text-sm text-gray-600">{metric.label}</div>
-                      </div>
-                      {/* <div className={`text-sm font-semibold text-${category.color}-600 bg-${category.color}-50 px-2 py-1 rounded-full`}>
-                        {metric.change}
-                      </div> */}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
 
         {/* Success Stories Carousel */}
         {/* <div data-aos="fade-down"

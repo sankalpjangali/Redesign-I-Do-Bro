@@ -1,7 +1,30 @@
-import React from 'react';
-import { TrendingUp, Building2, Users, Zap, Award, DollarSign } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Rocket, TrendingUp, Building2, Users, Zap, Award, DollarSign } from 'lucide-react';
 
 const EntrepreneurshipPage: React.FC = () => {
+  const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleElements((prev) => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = document.querySelectorAll('[data-animate]');
+    elements.forEach((el) => observerRef.current?.observe(el));
+
+    return () => observerRef.current?.disconnect();
+  }, []);
+
+  const isVisible = (id: string) => visibleElements.has(id);
+
   const stats = [
     { number: '1,000+', label: 'Entrepreneurs Supported' },
     { number: 'Rs 7+ Cr', label: 'Sales Facilitated' },
@@ -115,12 +138,71 @@ const EntrepreneurshipPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-12 px-6">
+      
+      {/* Hero Section with Icon */}
+      <div 
+        id="hero-icon"
+        data-animate
+        className={`bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 py-20 px-6 transition-all duration-700 ${
+          isVisible('hero-icon') ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <div
+            className={`inline-flex items-center justify-center w-20 h-20 bg-indigo-200 rounded-3xl mb-8 transition-all duration-700 ${
+              isVisible('hero-icon') ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+            }`}
+          >
+            <Rocket className="w-10 h-10 text-indigo-600" />
+          </div>
+
+          <h1
+            className={`text-5xl md:text-6xl font-bold text-gray-900 mb-4 transition-all duration-700 ${
+              isVisible('hero-icon') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+            style={{ transitionDelay: '150ms' }}
+          >
+            Entrepreneurship
+          </h1>
+
+          <h2
+            className={`text-xl md:text-2xl font-semibold text-indigo-600 mb-6 transition-all duration-700 ${
+              isVisible('hero-icon') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+            style={{ transitionDelay: '300ms' }}
+          >
+            Scaling Women, Social & Green Solutions
+          </h2>
+
+          <p
+            className={`text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto transition-all duration-700 ${
+              isVisible('hero-icon') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+            style={{ transitionDelay: '450ms' }}
+          >
+            Supporting enterprises creating socio-economic value and social-environmental impact
+          </p>
+        </div>
+      </div>
+
+      {/* Stats Section */}
+      <div 
+        id="stats"
+        data-animate
+        className={`bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-12 px-6 transition-all duration-700 ${
+          isVisible('stats') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+      >
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
+              <div 
+                key={index} 
+                className={`text-center transition-all duration-700 ${
+                  isVisible('stats') ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
                 <div className="text-3xl md:text-4xl font-bold mb-1">{stat.number}</div>
                 <div className="text-xs md:text-sm opacity-90">{stat.label}</div>
               </div>
@@ -131,7 +213,13 @@ const EntrepreneurshipPage: React.FC = () => {
 
       {/* ABCD Model Section */}
       <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="text-center mb-12">
+        <div 
+          id="abcd-header"
+          data-animate
+          className={`text-center mb-12 transition-all duration-700 ${
+            isVisible('abcd-header') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">The ABCD Model</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Our proprietary and progressive development framework that takes enterprises from ideation through scaling
@@ -140,7 +228,15 @@ const EntrepreneurshipPage: React.FC = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {abcdModel.map((item, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow">
+            <div 
+              key={index}
+              id={`abcd-${index}`}
+              data-animate
+              className={`bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-all duration-700 ${
+                isVisible(`abcd-${index}`) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: `${index * 150}ms` }}
+            >
               <div className="flex items-center mb-4">
                 <div className={`w-12 h-12 ${item.color} rounded-lg flex items-center justify-center text-2xl mr-3`}>
                   {item.icon}
@@ -173,7 +269,13 @@ const EntrepreneurshipPage: React.FC = () => {
       {/* Types of Enterprises */}
       <div className="bg-white py-16 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          <div 
+            id="enterprises-header"
+            data-animate
+            className={`text-center mb-12 transition-all duration-700 ${
+              isVisible('enterprises-header') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Types of Enterprises We Support</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               All focused on creating social and environmental value while generating revenue
@@ -182,7 +284,15 @@ const EntrepreneurshipPage: React.FC = () => {
 
           <div className="grid md:grid-cols-2 gap-8">
             {enterprises.map((enterprise, index) => (
-              <div key={index} className={`${enterprise.color} rounded-xl p-8 border border-gray-200`}>
+              <div 
+                key={index}
+                id={`enterprise-${index}`}
+                data-animate
+                className={`${enterprise.color} rounded-xl p-8 border border-gray-200 transition-all duration-700 ${
+                  isVisible(`enterprise-${index}`) ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+                }`}
+                style={{ transitionDelay: `${index * 150}ms` }}
+              >
                 <div className="flex items-start mb-4">
                   <div className="text-4xl mr-4">{enterprise.icon}</div>
                   <div>
@@ -213,7 +323,13 @@ const EntrepreneurshipPage: React.FC = () => {
 
       {/* Impact Section */}
       <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="bg-gradient-to-br from-purple-100 to-indigo-100 rounded-2xl p-8 md:p-12">
+        <div 
+          id="impact"
+          data-animate
+          className={`bg-gradient-to-br from-purple-100 to-indigo-100 rounded-2xl p-8 md:p-12 transition-all duration-700 ${
+            isVisible('impact') ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+          }`}
+        >
           <div className="mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               From Household Craft to Rs 30 Lakh Revenue
@@ -247,26 +363,19 @@ const EntrepreneurshipPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center bg-white rounded-xl p-6 shadow-sm">
-              <div className="text-3xl mb-2">{impact.jobs.icon}</div>
-              <div className="text-3xl font-bold text-purple-600 mb-1">{impact.jobs.number}</div>
-              <div className="text-xs text-gray-600">{impact.jobs.label}</div>
-            </div>
-            <div className="text-center bg-white rounded-xl p-6 shadow-sm">
-              <div className="text-3xl mb-2">{impact.income.icon}</div>
-              <div className="text-3xl font-bold text-purple-600 mb-1">{impact.income.number}</div>
-              <div className="text-xs text-gray-600">{impact.income.label}</div>
-            </div>
-            <div className="text-center bg-white rounded-xl p-6 shadow-sm">
-              <div className="text-3xl mb-2">{impact.households.icon}</div>
-              <div className="text-3xl font-bold text-purple-600 mb-1">{impact.households.number}</div>
-              <div className="text-xs text-gray-600">{impact.households.label}</div>
-            </div>
-            <div className="text-center bg-white rounded-xl p-6 shadow-sm">
-              <div className="text-3xl mb-2">{impact.reach.icon}</div>
-              <div className="text-3xl font-bold text-purple-600 mb-1">{impact.reach.number}</div>
-              <div className="text-xs text-gray-600">{impact.reach.label}</div>
-            </div>
+            {Object.values(impact).map((item, index) => (
+              <div 
+                key={index}
+                className={`text-center bg-white rounded-xl p-6 shadow-sm transition-all duration-700 ${
+                  isVisible('impact') ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+                }`}
+                style={{ transitionDelay: `${300 + index * 100}ms` }}
+              >
+                <div className="text-3xl mb-2">{item.icon}</div>
+                <div className="text-3xl font-bold text-purple-600 mb-1">{item.number}</div>
+                <div className="text-xs text-gray-600">{item.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

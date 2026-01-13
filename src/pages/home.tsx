@@ -9,6 +9,7 @@ import CollaborativeSolutions from '@/components/Sections/collaborative_solution
 import AllInOneBlogBuilder from '@/components/Sections/admin_blog';
 import MultiplierModel from '@/components/Sections/I_5'
 import OfferingsPage from "@/components/Sections/ofering_hero";
+import ApproachCards from '@/components/Sections/approch_cards';
 export default function Home() {
   return (
     <>
@@ -20,6 +21,7 @@ export default function Home() {
     <AboutSection />
     {/* <SolutionsSection /> */}
     <ImpactSection />
+    <ApproachCards />
     {/* <TeamSection /> */}
     {/* <ResourcesSection /> */}
     {/* <ContactSection /> */}

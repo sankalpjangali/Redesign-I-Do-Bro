@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { Users, Briefcase, Handshake } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface StatCardProps {
   value: string;
   label: string;
 }
+  
+
 
 const StatCard: React.FC<StatCardProps> = ({ value, label }) => (
   <div className="bg-white rounded-lg p-6 shadow-sm">
@@ -25,6 +28,7 @@ interface VerticalSectionProps {
   stats: { value: string; label: string }[];
   buttonText: string;
   buttonColor: string;
+  link:string;
 }
 
 const VerticalSection: React.FC<VerticalSectionProps> = ({
@@ -39,7 +43,10 @@ const VerticalSection: React.FC<VerticalSectionProps> = ({
   stats,
   buttonText,
   buttonColor,
-}) => (
+  link
+}) => {
+  const navigate = useNavigate();
+  return (
   <div className={`${bgColor} rounded-2xl p-8 mb-8 animate-on-scroll opacity-0 translate-y-8 transition-all duration-700`}>
     <div className="flex items-start gap-4 mb-6">
       <div className={`${bgColor === 'bg-teal-50' ? 'bg-teal-100' : bgColor === 'bg-purple-50' ? 'bg-purple-100' : 'bg-blue-100'} p-3 rounded-lg`}>
@@ -88,11 +95,12 @@ const VerticalSection: React.FC<VerticalSectionProps> = ({
       </p>
     </div>
 
-    <button  className={`${buttonColor} text-white px-6 py-3 rounded-full font-medium hover:opacity-90 transition-opacity`}>
+    <button  onClick={() => navigate(link)} className={`${buttonColor} text-white px-6 py-3 rounded-full font-medium hover:opacity-90 transition-opacity`}>
       {buttonText}
     </button>
   </div>
 );
+}
 
 export default function ThreeVerticalsPage() {
   useEffect(() => {
@@ -131,6 +139,7 @@ export default function ThreeVerticalsPage() {
         'Digital presence',
         'Community leadership'
       ],
+
       stats: [
         { value: '250,000+', label: 'Active Citizens' },
         { value: '24', label: 'Cities' },
@@ -138,7 +147,8 @@ export default function ThreeVerticalsPage() {
         { value: '22', label: 'States' }
       ],
       buttonText: 'Join Citizenship Programs →',
-      buttonColor: 'bg-teal-600'
+      buttonColor: 'bg-teal-600',
+      link:"/citizenship"
     },
     {
       icon: <Briefcase className="w-6 h-6 text-purple-600" />,
@@ -162,7 +172,8 @@ export default function ThreeVerticalsPage() {
         { value: '200+', label: 'Green Startups' }
       ],
       buttonText: 'Apply Entrepreneurship Support →',
-      buttonColor: 'bg-purple-600'
+      buttonColor: 'bg-purple-600',
+      link:"/entrepreneurship"
     },
     {
       icon: <Handshake className="w-6 h-6 text-blue-600" />,
@@ -185,7 +196,8 @@ export default function ThreeVerticalsPage() {
         { value: '10K+', label: 'Volunteers' }
       ],
       buttonText: 'Explore Partnership Models →',
-      buttonColor: 'bg-blue-600'
+      buttonColor: 'bg-blue-600',
+      link:"/partnership"
     }
   ];
 

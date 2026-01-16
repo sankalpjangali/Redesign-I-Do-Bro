@@ -1,9 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
+interface Stat {
+  value: string;
+  label: string;
+}
 
+interface CaseStudy {
+  id: number;
+  tag: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  challenge: string;
+  solution: string;
+  imageUrl: string;
+  stats: Stat[];
+  features: string[];
+}
 const CaseStudiesPage: React.FC = () => {
   const [visibleElements, setVisibleElements] = useState<Set<number>>(new Set());
   const observerRef = useRef<IntersectionObserver | null>(null);
-
+  const [caseStudie, setCaseStudies] = useState<CaseStudy[]>([]);
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
@@ -22,6 +38,30 @@ const CaseStudiesPage: React.FC = () => {
 
     return () => observerRef.current?.disconnect();
   }, []);
+  useEffect(() => {
+    const fetchcase = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:3000/api/casestudies"
+        );
+  
+        const data = await response.json();
+        console.log(data)
+  
+        if (Array.isArray(data)) {
+          setCaseStudies(data);
+        } else {
+          console.error("Invalid reflections response:", data);
+          setCaseStudies([]);
+        }
+      } catch (err) {
+        console.error("Failed to fetch reflections", err);
+        setCaseStudies([]);
+      }
+    };
+  
+    fetchcase();
+  }, []);
 
   const caseStudies = [
     {
@@ -38,7 +78,7 @@ const CaseStudiesPage: React.FC = () => {
         { value: '5', label: 'Districts' },
         { value: '2x', label: 'UN Collaborations' }
       ],
-      outcomes: [
+      features: [
         'Unified communications platform enabled cross-district disaster response',
         'Faster deployment and government-to-impact layer allocation networks',
         'Data-sharing systems with dashboard showcased transparent management',
@@ -59,7 +99,7 @@ const CaseStudiesPage: React.FC = () => {
         { value: '500K+', label: 'Beneficiaries' },
         { value: '10+', label: 'States' }
       ],
-      outcomes: [
+      features: [
         'Established comprehensive health and clean infrastructure network',
         'Sustainable healthcare practices on health foundations',
         'Enhanced local workforce quality and development training',
@@ -92,7 +132,7 @@ const CaseStudiesPage: React.FC = () => {
       {/* Case Studies */}
       <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto space-y-16">
-          {caseStudies.map((study, index) => (
+          {caseStudie.map((study, index) => (
             <div
               key={index}
               className={`transition-all duration-1000 ${
@@ -135,30 +175,25 @@ const CaseStudiesPage: React.FC = () => {
 
                   {/* Stats */}
                   <div className="grid grid-cols-4 gap-4 mb-8">
-                    {study.stats.map((stat, idx) => (
-                      <div key={idx} className="text-center">
-                        <div className="w-12 h-12 mx-auto mb-2 bg-gray-100 rounded-lg flex items-center justify-center">
-                          <span className="text-gray-400 text-xl">
-                            {idx === 0 ? '👥' : idx === 1 ? '📊' : idx === 2 ? '📍' : '🤝'}
-                          </span>
-                        </div>
-                        <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
-                        <div className="text-xs text-gray-500">{stat.label}</div>
-                      </div>
-                    ))}
-                  </div>
+  {(study.stats || []).map((stat, idx) => (
+    <div key={idx} className="text-center">
+      <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
+      <div className="text-xs text-gray-500">{stat.label}</div>
+    </div>
+  ))}
+</div>
 
-                  {/* Key Outcomes */}
+                  {/* Key features */}
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-3">Key Outcomes</h3>
+                    <h3 className="font-semibold text-gray-900 mb-3">Key features</h3>
                     <ul className="space-y-2">
-                      {study.outcomes.map((outcome, idx) => (
-                        <li key={idx} className="flex items-start text-sm text-gray-600">
-                          <span className="text-green-500 mr-2 mt-0.5">•</span>
-                          <span>{outcome}</span>
-                        </li>
-                      ))}
-                    </ul>
+  {(study.features || []).map((feature, idx) => (
+    <li key={idx} className="flex items-start text-sm text-gray-600">
+      <span className="text-green-500 mr-2 mt-0.5">•</span>
+      <span>{feature}</span>
+    </li>
+  ))}
+</ul>
                   </div>
                 </div>
 
@@ -166,7 +201,7 @@ const CaseStudiesPage: React.FC = () => {
                 <div className={index % 2 === 1 ? 'md:order-1' : ''}>
                   <div className="relative rounded-2xl overflow-hidden shadow-xl">
                     <img 
-                      src={study.image}
+                      src={study.imageUrl}
                       alt={study.title}
                       className="w-full h-96 object-cover"
                     />

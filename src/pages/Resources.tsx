@@ -1,7 +1,108 @@
 import React from 'react';
+import { useState,useEffect } from 'react';
 import { FileText, Download, ExternalLink, Calendar, Building2 } from 'lucide-react';
-
+interface Report{
+  id: number;
+  tag:string;
+  title: string;
+  pdf_link:string;
+}
+interface Reflection {
+  _id: string;
+  title: string;
+  tag: string;
+  description: string;
+  imageUrl: string;
+  author?: string;
+  date?: string;
+}
+interface News {
+  _id: string;
+  title: string;
+  description: string;
+  link: string;
+}
 const ResourcesPage: React.FC = () => {
+  const [additionalReports, setAdditionalReports] = useState<Report[]>([]);
+  const [Reflections, setReflections] = useState<Reflection[]>([]);
+  const [news, setnews] = useState<News[]>([]);
+useEffect(() => {
+  const fetchnews = async () => {
+    try {
+      const response = await fetch(
+        "https://backend-idobro.onrender.com/api/news"
+      );
+
+      const data = await response.json();
+      console.log(data)
+
+      if (Array.isArray(data)) {
+        setnews(data);
+      } else {
+        console.error("Invalid news response:", data);
+        setnews([]);
+      }
+    } catch (err) {
+      console.error("Failed to fetch news", err);
+      setnews([]);
+    }
+  };
+
+  fetchnews();
+}, []);
+useEffect(() => {
+  const fetchReflections = async () => {
+    try {
+      const response = await fetch(
+        "https://backend-idobro.onrender.com/api/reflections"
+      );
+
+      const data = await response.json();
+      console.log(data)
+
+      if (Array.isArray(data)) {
+        setReflections(data);
+      } else {
+        console.error("Invalid reflections response:", data);
+        setReflections([]);
+      }
+    } catch (err) {
+      console.error("Failed to fetch reflections", err);
+      setReflections([]);
+    }
+  };
+
+  fetchReflections();
+}, []);
+
+
+
+   useEffect(() => {
+  const fetchAdditionalReports = async () => {
+    try {
+      const response = await fetch(
+        "https://backend-idobro.onrender.com/api/Reports"
+      );
+      console.log(response)
+      const data = await response.json();
+      console.log(data)
+
+      // 🔐 SAFETY CHECK
+      if (Array.isArray(data)) {
+        setAdditionalReports(data);
+      } else {
+        console.error("Reports API did not return array:", data);
+        setAdditionalReports([]);
+      }
+    } catch (err) {
+      console.error("Failed to fetch reports", err);
+      setAdditionalReports([]);
+    }
+  };
+
+  fetchAdditionalReports();
+}, []);
+
   const reflections = [
     {
       image: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?w=600&h=400&fit=crop',
@@ -116,33 +217,33 @@ const ResourcesPage: React.FC = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reflections.map((reflection, index) => (
+          {Reflections.map((reflections, index) => (
             <div
               key={index}
               className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer"
             >
               <div className="relative overflow-hidden">
                 <img
-                  src={reflection.image}
-                  alt={reflection.title}
+                  src={reflections.imageUrl}
+                  alt={reflections.title}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="bg-white/90 backdrop-blur-sm text-gray-900 px-3 py-1 rounded-full text-xs font-semibold">
-                    {reflection.tag}
+                    {reflections.tag}
                   </span>
                 </div>
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-indigo-600 transition-colors">
-                  {reflection.title}
+                  {reflections.title}
                 </h3>
                 <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                  {reflection.description}
+                  {reflections.description}
                 </p>
                 <div className="flex items-center justify-between text-xs text-gray-500">
-                  <span>{reflection.author}</span>
-                  <span>{reflection.date}</span>
+                  <span>{reflections.author}</span>
+                  {/* <span>{reflection.date}</span> */}
                 </div>
               </div>
             </div>
@@ -155,7 +256,7 @@ const ResourcesPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900">Reports & Publications</h2>
-            <button className="text-indigo-600 hover:text-indigo-700 font-medium flex items-center gap-2">
+            <button onClick={()=>{window.open()}} className="text-indigo-600 hover:text-indigo-700 font-medium flex items-center gap-2">
               <span>Download complete</span>
               <Download className="w-4 h-4" />
             </button>
@@ -166,38 +267,45 @@ const ResourcesPage: React.FC = () => {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {reports.map((report, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 group cursor-pointer"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="bg-indigo-50 p-3 rounded-lg text-indigo-600 group-hover:bg-indigo-100 transition-colors">
-                    {report.icon}
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-xs text-indigo-600 font-semibold mb-2 uppercase tracking-wide">
-                      {report.type}
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">
-                      {report.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-4">
-                      {report.description}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-                        {report.tag}
-                      </span>
-                      <button className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 font-medium text-sm group-hover:gap-3 transition-all">
-                        <span>Download PDF</span>
-                        <Download className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+            {additionalReports.map((report) => (
+  <div
+    key={report.id}
+    className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 group cursor-pointer"
+  >
+    <div className="flex items-start gap-4">
+      <div className="bg-indigo-50 p-3 rounded-lg text-indigo-600">
+        <FileText className="w-6 h-6" />
+      </div>
+
+      <div className="flex-1">
+        <div className="text-xs text-indigo-600 font-semibold mb-2 uppercase tracking-wide">
+          Report
+        </div>
+
+        <h3 className="text-xl font-bold text-gray-900 mb-2">
+          {report.title}
+        </h3>
+
+        <div className="flex items-center justify-between">
+          <span className="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+            {report.tag}
+          </span>
+
+          <a
+            href={report.pdf_link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 font-medium text-sm"
+          >
+            <span>Download PDF</span>
+            <Download className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+))}
+
           </div>
         </div>
       </div>
@@ -217,7 +325,7 @@ const ResourcesPage: React.FC = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {mediaMentions.map((mention, index) => (
+          {news.map((mention, index) => (
             <div
               key={index}
               className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 p-6 border border-gray-200 group cursor-pointer"
@@ -226,15 +334,15 @@ const ResourcesPage: React.FC = () => {
                 <div>
                   <div className="flex items-center gap-3 mb-2">
                     <Building2 className="w-5 h-5 text-gray-400" />
-                    <span className="font-semibold text-gray-900">{mention.publication}</span>
+                    <span className="font-semibold text-gray-900">{mention.title}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
+                  {/* <div className="flex items-center gap-2 text-xs text-gray-500">
                     <Calendar className="w-3 h-3" />
                     <span>{mention.date}</span>
-                  </div>
+                  </div> */}
                 </div>
                 <span className="text-xs bg-indigo-50 text-indigo-600 px-2 py-1 rounded-full font-medium">
-                  {mention.category}
+                  {mention.description}
                 </span>
               </div>
               <h3 className="text-lg font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">

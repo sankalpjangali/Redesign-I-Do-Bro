@@ -20,11 +20,12 @@ const Header: React.FC = () => {
     {
       name: 'Offerings',
       href:'/offerings',
-      // submenu: [
-      //   { name: 'Entrepreneurship', href: '/entrepreneurship' },
-      //   { name: 'Citizenship', href: '/citizenship' },
-      //   { name: 'Partnership', href: '/partnership' },
-      // ],
+       submenu: [
+         { name: 'Amplifiation', href: '/offerings/1' },
+         { name: 'Covening & Capacity Building', href: '/offerings/2' },
+         { name: 'Evaluation & Research', href: '/offerings/3' },
+         { name: 'Stratergy & Design', href: '/offerings/4' },
+       ],
     },
     {
       name: 'Resources',

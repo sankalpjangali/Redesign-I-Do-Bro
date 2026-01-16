@@ -146,7 +146,7 @@ const FlagshipInitiativesPage: React.FC = () => {
                   <div className="grid grid-cols-3 gap-4 mb-8 py-6 border-y border-gray-200">
                     {initiative.stats.map((stat, idx) => (
                       <div key={idx} className="text-center">
-                        <div className="text-3xl mb-1">{stat.icon}</div>
+                        {/* <div className="text-3xl mb-1">{stat.icon}</div> */}
                         <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
                         <div className="text-xs text-gray-500">{stat.label}</div>
                       </div>

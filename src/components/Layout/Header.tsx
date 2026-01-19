@@ -32,7 +32,7 @@ const Header: React.FC = () => {
       href: "/resources",
     },
     {
-      name: "Flagship",
+      name: "Initiatives",
       href: "/flagships",
     },
     { name: "Case Studies", href: "/caseStudies" },

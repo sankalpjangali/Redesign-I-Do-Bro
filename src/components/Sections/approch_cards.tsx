@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Lightbulb, Handshake, Star, ArrowRight } from "lucide-react";
-
+import { useNavigate } from "react-router-dom";
+import { link } from "fs";
 const ApproachCards: React.FC = () => {
   const [visibleElements, setVisibleElements] = useState<Set<string>>(
     new Set(),
   );
   const observerRef = useRef<IntersectionObserver | null>(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
@@ -38,6 +39,7 @@ const ApproachCards: React.FC = () => {
         "Learn about our systems thinking framework, RISE values, and how we multiply impact",
       buttonText: "Learn More",
       buttonColor: "bg-indigo-600 hover:bg-indigo-700",
+      link: "offerings",
     },
     {
       id: "card2",
@@ -49,6 +51,7 @@ const ApproachCards: React.FC = () => {
         "Discover how we can work together to multiply your social impact",
       buttonText: "Let's Talk",
       buttonColor: "bg-green-600 hover:bg-green-700",
+      link: "contact",
     },
     {
       id: "card3",
@@ -60,6 +63,7 @@ const ApproachCards: React.FC = () => {
         "Explore KORU, RISE World Summit, and our circular economy programs",
       buttonText: "Explore Programs",
       buttonColor: "bg-indigo-600 hover:bg-indigo-700",
+      link: "flagships",
     },
   ];
 
@@ -100,6 +104,7 @@ const ApproachCards: React.FC = () => {
 
                 {/* Button */}
                 <button
+                  onClick={() => navigate(`/${card.link}`)}
                   className={`inline-flex items-center gap-2 ${card.buttonColor} text-white px-6 py-3 rounded-full font-semibold transition-all shadow-md hover:shadow-lg group`}
                 >
                   {card.buttonText}

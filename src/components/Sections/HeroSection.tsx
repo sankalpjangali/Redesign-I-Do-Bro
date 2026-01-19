@@ -12,7 +12,7 @@ const slides = [
       "Human-Centric Solutions through a systems approach and people-powered innovations to solve the world's most pressing challenges.",
     image:
       "https://res.cloudinary.com/dhs64xefe/image/upload/v1757831861/Website_Homepage_Images_25_vytt6j.png",
-    button: "Verticals",
+    button: "Our Verticals",
     link: "solutions",
   },
   {
@@ -23,7 +23,7 @@ const slides = [
       "Connecting ideas and people to co-create sustainable development across the globe.",
     image:
       "https://res.cloudinary.com/dhs64xefe/image/upload/v1757831860/Website_Homepage_Images_22_jbyoap.png",
-    button: "offerings",
+    button: "Our Offerings ",
     link: "offerings",
   },
   {
@@ -34,7 +34,7 @@ const slides = [
       "Building inclusive systems that ensure growth, dignity, and peace for all.",
     image:
       "https://res.cloudinary.com/dhs64xefe/image/upload/v1757831861/Website_Homepage_Images_23_fghr6l.png",
-    button: "flagships",
+    button: "Our Flagship Initiatives",
     link: "flagships",
   },
 ];
@@ -95,13 +95,9 @@ export default function HeroCarousel() {
               }
               className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center group"
             >
-              Explore our {slides[current].button}
+              {slides[current].button}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </button>
-
-            <div className="text-blue-200 text-lg font-medium mt-8">
-              Empowering communities across 8 countries and 29 Indian states
-            </div>
           </div>
         </div>
       </div>

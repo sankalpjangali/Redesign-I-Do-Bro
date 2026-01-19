@@ -376,9 +376,11 @@ const PartnershipPage: React.FC = () => {
           data-aos="fade-up"
         >
           <p className="text-indigo-900 text-sm md:text-base">
-            <span className="font-semibold">Powered by:</span> B2C Values,
-            Measurable, Inclusive, Sustainable, Tech-friendly, and Inclusive
-            through Creativity, Entrepreneurship, and Partnership
+            <span className="font-semibold">
+              Powered by RISE Values (Responsible, Inclusive, Sustainable,
+              Eco-friendly) and activated through Citizenship, Entrepreneurship,
+              and Partnership
+            </span>
           </p>
         </div>
       </div>

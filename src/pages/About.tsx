@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Users,
   Briefcase,
@@ -6,8 +6,19 @@ import {
   Award,
   Globe,
   TrendingUp,
-  Target,
+  Mail,
+  Linkedin,
 } from "lucide-react";
+
+interface TeamMember {
+  id: number;
+  name: string;
+  designation: string;
+  imageUrl: string;
+  experience: string;
+  email: string;
+  linkedinUrl: string;
+}
 
 // Extend Window interface for AOS
 declare global {
@@ -25,6 +36,31 @@ declare global {
 }
 
 const ImpactJourneyPage: React.FC = () => {
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [loadingTeam, setLoadingTeam] = useState(true);
+
+  useEffect(() => {
+    const fetchTeamMembers = async () => {
+      try {
+        setLoadingTeam(true);
+        const response = await fetch(
+          "https://backend-idobro.onrender.com/api/team",
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setTeamMembers(data);
+      } catch (error) {
+        console.error("Error fetching team members:", error);
+      } finally {
+        setLoadingTeam(false);
+      }
+    };
+
+    fetchTeamMembers();
+  }, []);
+
   useEffect(() => {
     // Initialize AOS
     const initAOS = () => {
@@ -121,15 +157,19 @@ const ImpactJourneyPage: React.FC = () => {
         >
           <div className="flex items-center gap-3">
             <Users className="w-5 h-5 text-purple-600" />
-            <span className="text-gray-700">15 years of advisory</span>
+            <span className="text-gray-700">16 years of advisory</span>
           </div>
           <div className="flex items-center gap-3">
             <TrendingUp className="w-5 h-5 text-purple-600" />
-            <span className="text-gray-700">240+ individuals reached</span>
+            <span className="text-gray-700">2M+ individuals reached</span>
           </div>
           <div className="flex items-center gap-3">
             <Award className="w-5 h-5 text-purple-600" />
-            <span className="text-gray-700">72 cohorts active</span>
+            <span className="text-gray-700">540+ partnerships</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Globe className="w-5 h-5 text-purple-600" />
+            <span className="text-gray-700">Projects in 7 countries</span>
           </div>
         </div>
       </div>
@@ -265,99 +305,6 @@ const ImpactJourneyPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Three-Layer Approach Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
-              data-aos="fade-up"
-            >
-              Our Three-Verticals
-            </h2>
-            <p
-              className="text-gray-600 max-w-3xl mx-auto"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              We address complex global problems at three interconnected levels,
-              creating momentum for real systems change.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {[
-              {
-                icon: <Users className="w-6 h-6 text-green-600" />,
-                bgColor: "bg-green-100",
-                textColor: "text-green-600",
-                level: "INDIVIDUAL LEVEL",
-                title: "Citizenship",
-                subtitle:
-                  "Individual awareness + participation + engaged citizenship + action",
-                text: "Example: RISE community members collaborate and engage in sustainability actions (carbon footprint reduction, volunteerism, regenerative practices) and receive impact-first...",
-              },
-              {
-                icon: <Briefcase className="w-6 h-6 text-purple-600" />,
-                bgColor: "bg-purple-100",
-                textColor: "text-purple-600",
-                level: "ORGANIZATIONAL LEVEL",
-                title: "Entrepreneurship",
-                subtitle:
-                  "Transparency and tech-first processes + sustained data-led action",
-                text: "Example: Social enterprises use RISE Shared Measurement to analyze their work with actionable data. They are equipped with collaborative, research-led strategy...",
-              },
-              {
-                icon: <Handshake className="w-6 h-6 text-blue-600" />,
-                bgColor: "bg-blue-100",
-                textColor: "text-blue-600",
-                level: "ECOSYSTEM LEVEL",
-                title: "Partnership",
-                subtitle:
-                  "Structures of aligned stakeholders create systemic change",
-                text: "Example: Regional ecosystem partners (donors, accelerators, NGO networks, universities, foundations, governments, etc.) bring systemic insights...",
-              },
-            ].map((layer, idx) => (
-              <div
-                key={idx}
-                className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-xl transition-shadow duration-300"
-                data-aos="fade-up"
-                data-aos-delay={idx * 100}
-              >
-                <div
-                  className={`w-12 h-12 ${layer.bgColor} rounded-lg flex items-center justify-center mb-4`}
-                >
-                  {layer.icon}
-                </div>
-                <div
-                  className={`text-sm ${layer.textColor} font-semibold mb-2`}
-                >
-                  {layer.level}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {layer.title}
-                </h3>
-                <p className="text-gray-700 font-medium mb-3">
-                  {layer.subtitle}
-                </p>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {layer.text}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <p
-            className="text-center text-gray-600 text-sm max-w-4xl mx-auto"
-            data-aos="fade-up"
-          >
-            These three layers reinforce each other. Engaged citizens support
-            entrepreneurs. Entrepreneurs inform investment. Partnerships enable
-            scale. Together, they create systemic, sustained impact.
-          </p>
-        </div>
-      </div>
-
       {/* Global Recognition Section */}
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-12">
@@ -416,6 +363,181 @@ const ImpactJourneyPage: React.FC = () => {
               </p>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Team Section */}
+      <div className="bg-gradient-to-b from-white to-gray-50 py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12" data-aos="fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Meet Our Team
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Our dedicated professionals bring years of expertise and passion
+              to every project
+            </p>
+          </div>
+
+          {loadingTeam ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[1, 2, 3, 4].map((i) => (
+                <div
+                  key={i}
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg animate-pulse"
+                >
+                  <div className="w-full h-64 bg-gray-300"></div>
+                  <div className="p-6 space-y-4">
+                    <div className="h-6 bg-gray-300 rounded"></div>
+                    <div className="h-4 bg-gray-300 rounded w-2/3"></div>
+                    <div className="h-16 bg-gray-300 rounded"></div>
+                    <div className="h-10 bg-gray-300 rounded"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : teamMembers.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-gray-500 text-lg">
+                No team members available at the moment
+              </p>
+            </div>
+          ) : (
+            <>
+              {/* Desktop: Grid with 4 columns */}
+              <div
+                className="hidden lg:grid lg:grid-cols-4 gap-6"
+                data-aos="fade-up"
+              >
+                {teamMembers.slice(0, 4).map((member, idx) => (
+                  <div
+                    key={member.id}
+                    data-aos="fade-up"
+                    data-aos-delay={idx * 100}
+                  >
+                    <TeamCard member={member} />
+                  </div>
+                ))}
+              </div>
+
+              {/* Show remaining members in a scrollable row on desktop if more than 4 */}
+              {teamMembers.length > 4 && (
+                <div
+                  className="hidden lg:block mt-6"
+                  data-aos="fade-up"
+                  data-aos-delay="400"
+                >
+                  <div
+                    className="overflow-x-auto pb-4"
+                    style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                  >
+                    <div className="flex gap-6">
+                      {teamMembers.slice(4).map((member) => (
+                        <div key={member.id} className="flex-shrink-0 w-72">
+                          <TeamCard member={member} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Tablet: Grid with 2 columns */}
+              <div className="hidden md:grid md:grid-cols-2 lg:hidden gap-6">
+                {teamMembers.map((member, idx) => (
+                  <div
+                    key={member.id}
+                    data-aos="fade-up"
+                    data-aos-delay={idx * 100}
+                  >
+                    <TeamCard member={member} />
+                  </div>
+                ))}
+              </div>
+
+              {/* Mobile: Horizontal Scroll */}
+              <div
+                className="md:hidden overflow-x-auto pb-4"
+                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+              >
+                <div className="flex gap-4">
+                  {teamMembers.map((member) => (
+                    <div key={member.id} className="flex-shrink-0 w-80">
+                      <TeamCard member={member} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const TeamCard: React.FC<{ member: TeamMember }> = ({ member }) => {
+  return (
+    <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden h-full">
+      {/* Image Container */}
+      <div className="relative overflow-hidden h-64">
+        <img
+          src={member.imageUrl}
+          alt={member.name}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = "https://via.placeholder.com/400x400?text=Team+Member";
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </div>
+
+      {/* Content */}
+      <div className="p-6 space-y-4">
+        {/* Name and Designation */}
+        <div>
+          <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-purple-600 transition-colors">
+            {member.name}
+          </h3>
+          <p className="text-purple-600 font-semibold text-sm">
+            {member.designation}
+          </p>
+        </div>
+
+        {/* Experience Badge */}
+        <div className="flex items-center gap-2 bg-purple-50 rounded-lg p-3">
+          <Briefcase className="h-4 w-4 text-purple-600 flex-shrink-0" />
+          <div className="flex-1">
+            <span className="text-xs font-semibold text-gray-700 block">
+              Experience
+            </span>
+            <span className="text-sm text-gray-900 font-medium">
+              {member.experience}
+            </span>
+          </div>
+        </div>
+
+        {/* Contact Actions */}
+        <div className="flex gap-3 pt-3 border-t border-gray-100">
+          <a
+            href={`mailto:${member.email}`}
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200 text-sm font-medium"
+            title="Send Email"
+          >
+            <Mail className="h-4 w-4" />
+            <span>Email</span>
+          </a>
+          <a
+            href={member.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200 text-sm font-medium"
+            title="View LinkedIn Profile"
+          >
+            <Linkedin className="h-4 w-4" />
+            <span>LinkedIn</span>
+          </a>
         </div>
       </div>
     </div>

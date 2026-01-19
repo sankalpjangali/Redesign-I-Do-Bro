@@ -140,7 +140,7 @@ const EntrepreneurshipPage: React.FC = () => {
     {
       icon: "🌾",
       color: "bg-green-50",
-      title: "Agri & Circular Enterprises",
+      title: "Green Enterprises",
       description:
         "Empowering enterprises emphasizing environmental sustainability, clean technology, or circular production principles.",
       examples: [
@@ -252,6 +252,77 @@ const EntrepreneurshipPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Types of Enterprises */}
+      <div className="bg-white py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div
+            id="enterprises-header"
+            data-animate
+            className={`text-center mb-12 transition-all duration-700 ${
+              isVisible("enterprises-header")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Types of Enterprises We Support
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              All focused on creating social and environmental value while
+              generating revenue
+            </p>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {enterprises.map((enterprise, index) => (
+                <div
+                  key={index}
+                  id={`enterprise-${index}`}
+                  data-animate
+                  className={`${enterprise.color} rounded-xl p-8 border border-gray-200 transition-all duration-700 ${
+                    isVisible(`enterprise-${index}`)
+                      ? "opacity-100 translate-x-0"
+                      : "opacity-0 translate-x-8"
+                  }`}
+                  style={{ transitionDelay: `${index * 150}ms` }}
+                >
+                  <div className="flex items-start mb-4">
+                    <div className="text-4xl mr-4">{enterprise.icon}</div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                        {enterprise.title}
+                      </h3>
+                      <p className="text-sm text-gray-700 mb-4">
+                        {enterprise.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mb-4">
+                    <p className="text-xs font-semibold text-gray-800 mb-2">
+                      Examples:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {enterprise.examples.map((example, idx) => (
+                        <span
+                          key={idx}
+                          className="text-xs bg-white px-3 py-1 rounded-full text-gray-700 border border-gray-200"
+                        >
+                          {example}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="text-xs text-gray-600 italic border-t border-gray-300 pt-3 mt-3">
+                    {enterprise.stats}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* ABCD Model Section */}
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div
@@ -325,82 +396,6 @@ const EntrepreneurshipPage: React.FC = () => {
           ))}
         </div>
       </div>
-
-      {/* Types of Enterprises */}
-      <div className="bg-white py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div
-            id="enterprises-header"
-            data-animate
-            className={`text-center mb-12 transition-all duration-700 ${
-              isVisible("enterprises-header")
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Types of Enterprises We Support
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              All focused on creating social and environmental value while
-              generating revenue
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {enterprises.map((enterprise, index) => (
-                <div
-                  key={index}
-                  id={`enterprise-${index}`}
-                  data-animate
-                  className={`${enterprise.color} rounded-xl p-8 border border-gray-200 transition-all duration-700 ${
-                    isVisible(`enterprise-${index}`)
-                      ? "opacity-100 translate-x-0"
-                      : "opacity-0 translate-x-8"
-                  } ${
-                    enterprises.length === 3 && index === 2
-                      ? "md:col-span-2 md:max-w-2xl md:mx-auto"
-                      : ""
-                  }`}
-                  style={{ transitionDelay: `${index * 150}ms` }}
-                >
-                  <div className="flex items-start mb-4">
-                    <div className="text-4xl mr-4">{enterprise.icon}</div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">
-                        {enterprise.title}
-                      </h3>
-                      <p className="text-sm text-gray-700 mb-4">
-                        {enterprise.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mb-4">
-                    <p className="text-xs font-semibold text-gray-800 mb-2">
-                      Examples:
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {enterprise.examples.map((example, idx) => (
-                        <span
-                          key={idx}
-                          className="text-xs bg-white px-3 py-1 rounded-full text-gray-700 border border-gray-200"
-                        >
-                          {example}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="text-xs text-gray-600 italic border-t border-gray-300 pt-3 mt-3">
-                    {enterprise.stats}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Impact Section */}
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div

@@ -37,11 +37,15 @@ const Footer: React.FC = () => {
   ];
 
   const resourceLinks = [
-    { name: "Impact Reports", href: "#", icon: Download },
+    {
+      name: "Impact Reports",
+      href: "https://res.cloudinary.com/dhs64xefe/image/upload/v1754928336/impact_report_lqvnjx.pdf",
+      icon: Download,
+    },
     { name: "Company Brochure", href: "#", icon: Download },
     { name: "Media Toolkit", href: "#", icon: Download },
-    { name: "Blog & News", href: "#", icon: ExternalLink },
-    { name: "Newsletter Archive", href: "#", icon: ExternalLink },
+    { name: "Blog & News", href: "/resources", icon: ExternalLink },
+    { name: "Newsletter Archive", href: "/resources", icon: ExternalLink },
   ];
 
   return (

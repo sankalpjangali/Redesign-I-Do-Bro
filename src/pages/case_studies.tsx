@@ -46,7 +46,9 @@ const CaseStudiesPage: React.FC = () => {
   useEffect(() => {
     const fetchcase = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/casestudies");
+        const response = await fetch(
+          "https://backend-idobro.onrender.com/api/casestudies",
+        );
 
         const data = await response.json();
         console.log(data);

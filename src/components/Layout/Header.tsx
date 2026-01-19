@@ -1,42 +1,42 @@
-import React, { useState } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import React, { useState } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+
     {
-      name: 'Verticals',
+      name: "Verticals",
       submenu: [
-        { name: 'Entrepreneurship', href: '/entrepreneurship' },
-        { name: 'Citizenship', href: '/citizenship' },
-        { name: 'Partnership', href: '/partnership' },
+        { name: "Entrepreneurship", href: "/entrepreneurship" },
+        { name: "Citizenship", href: "/citizenship" },
+        { name: "Partnership", href: "/partnership" },
       ],
     },
     {
-      name: 'Offerings',
-      href:'/offerings',
-       submenu: [
-         { name: 'Amplifiation', href: '/offerings/1' },
-         { name: 'Covening & Capacity Building', href: '/offerings/2' },
-         { name: 'Evaluation & Research', href: '/offerings/3' },
-         { name: 'Stratergy & Design', href: '/offerings/4' },
-       ],
+      name: "Offerings",
+      href: "/offerings",
+      submenu: [
+        { name: "Amplification & Outreach ", href: "/offerings/1" },
+        { name: "Covening & Capacity Building", href: "/offerings/2" },
+        { name: "Evaluation & Research", href: "/offerings/3" },
+        { name: "Stratergy & Design", href: "/offerings/4" },
+      ],
     },
     {
-      name: 'Resources',
-      href: '/resources',
+      name: "Resources",
+      href: "/resources",
     },
     {
-      name: 'Flagships',
-      href: '/flagships',
+      name: "Flagship",
+      href: "/flagships",
     },
-    { name: 'Case Studies', href: '/caseStudies' },
-    { name: 'Contact', href: '/contact' },
+    { name: "Case Studies", href: "/caseStudies" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const toggleDropdown = (name: string) => {
@@ -56,8 +56,10 @@ const Header: React.FC = () => {
               className="h-10 w-10 object-contain"
             />
             <div>
-              <div className="text-2xl font-bold text-blue-600">idobro</div>
-              <div className="text-sm text-gray-600 -mt-1">Multiply your Impact</div>
+              <div className="text-2xl font-bold text-blue-600">Idobro</div>
+              <div className="text-sm text-gray-600 -mt-1">
+                Multiply your Impact
+              </div>
             </div>
           </div>
 
@@ -97,7 +99,7 @@ const Header: React.FC = () => {
                 >
                   {item.name}
                 </a>
-              )
+              ),
             )}
           </div>
 
@@ -107,7 +109,11 @@ const Header: React.FC = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-700 hover:text-blue-600"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -126,7 +132,7 @@ const Header: React.FC = () => {
                       {item.name}
                       <ChevronDown
                         className={`ml-2 h-4 w-4 transform transition-transform ${
-                          activeDropdown === item.name ? 'rotate-180' : ''
+                          activeDropdown === item.name ? "rotate-180" : ""
                         }`}
                       />
                     </button>
@@ -152,7 +158,7 @@ const Header: React.FC = () => {
                   >
                     {item.name}
                   </a>
-                )
+                ),
               )}
             </div>
           </div>

@@ -9,11 +9,11 @@ const slides = [
     title: "Partner for",
     highlight: "Purpose, Profit & Peace",
     description:
-      "Human-Centric Solutions through systems approach and people-powered innovations to solve the world's most pressing challenges.",
+      "Human-Centric Solutions through a systems approach and people-powered innovations to solve the world's most pressing challenges.",
     image:
       "https://res.cloudinary.com/dhs64xefe/image/upload/v1757831861/Website_Homepage_Images_25_vytt6j.png",
-    button:"Verticals",
-    link:'solutions'
+    button: "Verticals",
+    link: "solutions",
   },
   {
     id: 2,
@@ -23,8 +23,8 @@ const slides = [
       "Connecting ideas and people to co-create sustainable development across the globe.",
     image:
       "https://res.cloudinary.com/dhs64xefe/image/upload/v1757831860/Website_Homepage_Images_22_jbyoap.png",
-      button:"offeerings",
-     link: 'offerings'
+    button: "offerings",
+    link: "offerings",
   },
   {
     id: 3,
@@ -34,8 +34,8 @@ const slides = [
       "Building inclusive systems that ensure growth, dignity, and peace for all.",
     image:
       "https://res.cloudinary.com/dhs64xefe/image/upload/v1757831861/Website_Homepage_Images_23_fghr6l.png",
-    button:"flagships",
-    link: 'flagships'
+    button: "flagships",
+    link: "flagships",
   },
 ];
 
@@ -51,7 +51,10 @@ export default function HeroCarousel() {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center overflow-hidden"
+    >
       {/* Slides */}
       <div className="absolute inset-0 transition-all duration-1000 ease-in-out">
         {slides.map((slide, index) => (
@@ -87,15 +90,17 @@ export default function HeroCarousel() {
             </p>
 
             <button
-              onClick={() => (window.location.href = `/${slides[current].link}`)}
+              onClick={() =>
+                (window.location.href = `/${slides[current].link}`)
+              }
               className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center group"
             >
-              Explore Our {slides[current].button}
+              Explore our {slides[current].button}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </button>
 
             <div className="text-blue-200 text-lg font-medium mt-8">
-              Empowering communities across 7 countries and 24 Indian states
+              Empowering communities across 8 countries and 29 Indian states
             </div>
           </div>
         </div>

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Check } from "lucide-react";
-import { useParams } from "react-router-dom";
-
+import { Navigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const AmplificationOutreach: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { id } = useParams<{ id: string }>();
-
+  const navigate = useNavigate();
   const offerings = [
     {
       id: 1,
@@ -73,7 +73,7 @@ const AmplificationOutreach: React.FC = () => {
     },
   ];
 
-  const item = offerings.find(o => o.id === Number(id));
+  const item = offerings.find((o) => o.id === Number(id));
 
   useEffect(() => {
     setIsVisible(true);
@@ -125,11 +125,17 @@ const AmplificationOutreach: React.FC = () => {
         </div>
 
         {/* CTA */}
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-3">
           <button
             className={`${item.buttonColor} text-white px-8 py-4 rounded-full font-semibold text-lg transition hover:scale-105 shadow-lg`}
           >
             {item.buttonText}
+          </button>
+          <button
+            onClick={() => navigate(`/offerings`)}
+            className={`${item.buttonColor} text-white px-8 py-4 rounded-full font-semibold text-lg transition hover:scale-105 shadow-lg`}
+          >
+            Back
           </button>
         </div>
       </div>

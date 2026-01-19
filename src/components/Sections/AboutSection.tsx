@@ -1,184 +1,135 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Target, Eye, Heart, Award, MapPin, Users, Globe, Building } from "lucide-react";
-
-const YearDifference = () => {
-  const startDate = new Date("2009-09-01");
-  const now = new Date();
-
-  let yearsDiff = now.getFullYear() - startDate.getFullYear();
-
-  if (now.getMonth() < 8) {
-    yearsDiff--;
-  }
-  return yearsDiff;
-};
+import React, { useState, useEffect } from "react";
+import {
+  Globe,
+  MapPin,
+  Users,
+  Award,
+  Building,
+  GraduationCap,
+} from "lucide-react";
 
 const AboutSection: React.FC = () => {
   const [metrics, setMetrics] = useState({
     countries: 0,
     states: 0,
+    people: 0,
     entrepreneurs: 0,
     students: 0,
-    individuals: 0
+    employees: 0,
   });
 
   const finalMetrics = {
-    countries: 7,
-    states: 22,
-    entrepreneurs: 1550,
-    students: 120000,
-    individuals: 1000000,
+    countries: 8,
+    states: 29,
+    people: 2000000,
+    entrepreneurs: 5000,
+    students: 250000,
+    employees: 150000,
   };
 
   useEffect(() => {
-    const animateCounter = (key: keyof typeof metrics, target: number, duration: number = 2000) => {
+    const animateCounter = (
+      key: keyof typeof metrics,
+      target: number,
+      duration = 2000,
+    ) => {
       const startTime = Date.now();
-      const startValue = 0;
-      
-      const updateCounter = () => {
-        const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const currentValue = Math.floor(startValue + (target - startValue) * progress);
-        
-        setMetrics(prev => ({ ...prev, [key]: currentValue }));
-        
-        if (progress < 1) {
-          requestAnimationFrame(updateCounter);
-        }
+
+      const update = () => {
+        const progress = Math.min((Date.now() - startTime) / duration, 1);
+        const value = Math.floor(target * progress);
+        setMetrics((prev) => ({ ...prev, [key]: value }));
+        if (progress < 1) requestAnimationFrame(update);
       };
-      
-      requestAnimationFrame(updateCounter);
+
+      requestAnimationFrame(update);
     };
 
-    setTimeout(() => animateCounter('countries', finalMetrics.countries), 200);
-    setTimeout(() => animateCounter('states', finalMetrics.states), 400);
-    setTimeout(() => animateCounter('entrepreneurs', finalMetrics.entrepreneurs), 600);
-    setTimeout(() => animateCounter('students', finalMetrics.students), 800);
-    setTimeout(() => animateCounter('individuals', finalMetrics.individuals), 1000);
+    animateCounter("countries", finalMetrics.countries, 1200);
+    animateCounter("states", finalMetrics.states, 1400);
+    animateCounter("people", finalMetrics.people, 1600);
+    animateCounter("entrepreneurs", finalMetrics.entrepreneurs, 1800);
+    animateCounter("students", finalMetrics.students, 2000);
+    animateCounter("employees", finalMetrics.employees, 2200);
   }, []);
 
   const formatNumber = (num: number) => {
-    if (num >= 1000000) {
-      return (num / 1000000).toFixed(1) + 'M';
-    } else if (num >= 1000) {
-      return (num / 1000).toFixed(0) + 'K';
-    }
+    if (num >= 1_000_000) return (num / 1_000_000).toFixed(1) + "M";
+    if (num >= 1_000) return (num / 1_000).toFixed(0) + "K";
     return num.toString();
   };
 
+  const MetricCard = ({
+    icon: Icon,
+    value,
+    label,
+    color,
+  }: {
+    icon: any;
+    value: string;
+    label: string;
+    color: string;
+  }) => (
+    <div className="text-center bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all">
+      <div
+        className={`w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center bg-${color}-100`}
+      >
+        <Icon className={`w-7 h-7 text-${color}-600`} />
+      </div>
+      <div className={`text-4xl font-bold text-${color}-600 mb-2`}>{value}</div>
+      <div className="text-gray-700 font-semibold">{label}</div>
+    </div>
+  );
+
   return (
-    <section id="our-story" className="py-12 sm:py-16 lg:py-20 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero About Content */}
-     
+    <section className="py-14 bg-white">
+      <div className="max-w-7xl mx-auto px-4">
+        <h3 className="text-3xl lg:text-4xl font-bold text-center mb-4">
+          Our Impact at a Glance
+        </h3>
 
-        {/* PECO-SYSTEM Framework */}
-{/* PECO-SYSTEM Framework */}
-{/* <div className="bg-white rounded-2xl p-6 sm:p-8 lg:p-12 mb-12 lg:mb-16 max-w-5xl mx-auto shadow-sm">
-  <div className="text-center mb-8 lg:mb-12">
-    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
-      The PECO-SYSTEM Framework
-    </h3>
-    <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-      Our holistic approach integrates People, Environment, Community, and Organization 
-      to create sustainable impact ecosystems.
-    </p>
-  </div>
+        <p className="text-center text-gray-600 mb-10 max-w-3xl mx-auto">
+          Footprint across <strong>8 countries</strong>: India, Nepal, Sri
+          Lanka, Bangladesh, Dubai, Abu Dhabi, Kuwait, and Cambodia.
+        </p>
 
-  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 justify-items-center">
-    <div className="text-center max-w-xs">
-      <div className="bg-purple-100 rounded-full p-4 w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 flex items-center justify-center">
-        <Heart className="h-7 w-7 sm:h-9 sm:w-9 text-purple-600" />
-      </div>
-      <h4 className="font-bold text-gray-900 mb-3 text-base sm:text-lg">Partners</h4>
-      <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-        Emphasizing collaboration across sectors—government, corporations, NGOs, academia, and local communities.
-      </p>
-    </div>
-
-    <div className="text-center max-w-xs">
-      <div className="bg-green-100 rounded-full p-4 w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 flex items-center justify-center">
-        <Globe className="h-7 w-7 sm:h-9 sm:w-9 text-green-600" />
-      </div>
-      <h4 className="font-bold text-gray-900 mb-3 text-base sm:text-lg">Entrepreneurs</h4>
-      <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-        Supporting social and green enterprises, including women entrepreneurs.
-      </p>
-    </div>
-
-    <div className="text-center max-w-xs">
-      <div className="bg-blue-100 rounded-full p-4 w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 flex items-center justify-center">
-        <Users className="h-7 w-7 sm:h-9 sm:w-9 text-blue-600" />
-      </div>
-      <h4 className="font-bold text-gray-900 mb-3 text-base sm:text-lg">Citizens</h4>
-      <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-        Fostering individual participation and ownership in creating a better world.
-      </p>
-    </div>
-  </div>
-</div> */}
-
-
-        {/* Impact Metrics Dashboard */}
-        <div className="bg-white rounded-2xl p-6 sm:p-8 lg:p-12">
-          <h3 className="text-gray-900 text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 lg:mb-12 text-center">
-            Our Impact at a Glance
-          </h3>
-          
-          {/* Top Row - 2 Columns */}
-          <div className="grid sm:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8 max-w-4xl mx-auto">
-            <div className="text-center bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-600 mb-3">
-                {metrics.countries}
-              </div>
-              <div className="text-gray-700 text-sm sm:text-base lg:text-lg font-semibold">
-                Countries Reached
-              </div>
-            </div>
-            
-            <div className="text-center bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-purple-600 mb-3">
-                {metrics.states}
-              </div>
-              <div className="text-gray-700 text-sm sm:text-base lg:text-lg font-semibold">
-                Indian States
-              </div>
-            </div>
-          </div>
-          
-          {/* Middle Row - 2 Columns */}
-          <div className="grid sm:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8 max-w-4xl mx-auto">
-            <div className="text-center bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-green-600 mb-3">
-                {formatNumber(metrics.entrepreneurs)}+
-              </div>
-              <div className="text-gray-700 text-sm sm:text-base lg:text-lg font-semibold">
-                Entrepreneurs Supported
-              </div>
-            </div>
-            
-            <div className="text-center bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-yellow-600 mb-3">
-                {formatNumber(metrics.students)}+
-              </div>
-              <div className="text-gray-700 text-sm sm:text-base lg:text-lg font-semibold">
-                Students in RISE Program
-              </div>
-            </div>
-          </div>
-          
-          {/* Bottom - Full Width Centered */}
-          <div className="max-w-2xl mx-auto">
-            <div className="text-center bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-8 sm:p-10 lg:p-12 border border-orange-100 shadow-md hover:shadow-lg transition-all duration-300">
-              <div className="text-5xl sm:text-6xl lg:text-7xl font-bold text-orange-600 mb-3 sm:mb-4">
-                {formatNumber(metrics.individuals)}+
-              </div>
-              <div className="text-gray-800 text-base sm:text-lg lg:text-xl font-semibold">
-                Lives Impacted During COVID-19
-              </div>
-            </div>
-          </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <MetricCard
+            icon={Globe}
+            value={metrics.countries.toString()}
+            label="Countries"
+            color="blue"
+          />
+          <MetricCard
+            icon={MapPin}
+            value={metrics.states.toString()}
+            label="Indian States"
+            color="purple"
+          />
+          <MetricCard
+            icon={Users}
+            value={formatNumber(metrics.people) + "+"}
+            label="People Reached"
+            color="orange"
+          />
+          <MetricCard
+            icon={Award}
+            value={formatNumber(metrics.entrepreneurs) + "+"}
+            label="Entrepreneurs Supported"
+            color="green"
+          />
+          <MetricCard
+            icon={GraduationCap}
+            value={formatNumber(metrics.students) + "+"}
+            label="Students Impacted"
+            color="yellow"
+          />
+          <MetricCard
+            icon={Building}
+            value={formatNumber(metrics.employees) + "+"}
+            label="Employees Engaged"
+            color="red"
+          />
         </div>
       </div>
     </section>

@@ -9,11 +9,11 @@ const TrustedOrganizations: React.FC = () => {
       logo: "https://res.cloudinary.com/dhs64xefe/image/upload/v1768814477/Tata_logo_ob4ngl.png",
     },
     {
-      name: "Glenmark",
+      name: "Glenmark Foundation",
       logo: "https://res.cloudinary.com/dhs64xefe/image/upload/v1768814642/GF_Logo_gdioit.jpg",
     },
     {
-      name: "Kotak",
+      name: "Kotak Education Foundation",
       logo: "https://res.cloudinary.com/dhs64xefe/image/upload/v1768814643/kotak_rqnaot.png",
     },
     {
@@ -25,7 +25,7 @@ const TrustedOrganizations: React.FC = () => {
       logo: "https://res.cloudinary.com/dhs64xefe/image/upload/v1768814643/unicef_2_rm7d6y.png",
     },
     {
-      name: "Britannia",
+      name: "Britannia Nutrition Foundation",
       logo: "https://res.cloudinary.com/dhs64xefe/image/upload/v1768815482/britani_yc0p9s.jpg",
     },
   ];

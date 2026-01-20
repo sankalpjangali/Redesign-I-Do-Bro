@@ -5,7 +5,7 @@ const TrustedOrganizations: React.FC = () => {
 
   const organizations = [
     {
-      name: "Tata Trusts",
+      name: "Tata Capital",
       logo: "https://res.cloudinary.com/dhs64xefe/image/upload/v1768814477/Tata_logo_ob4ngl.png",
     },
     {

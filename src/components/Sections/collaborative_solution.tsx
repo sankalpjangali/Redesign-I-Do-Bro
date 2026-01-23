@@ -160,7 +160,7 @@ const CollaborativeSolutions: React.FC = () => {
             style={{ transitionDelay: "200ms" }}
           >
             <img
-              src="./public/images/hero/Challenges.png"
+              src="https://res.cloudinary.com/dhs64xefe/image/upload/v1769166297/Challenges_xdljdd.png"
               alt="Collaborative Solutions"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
             />

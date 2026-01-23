@@ -193,12 +193,6 @@ const ImpactJourneyPage: React.FC = () => {
                 <span className="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg text-sm font-medium">
                   Founded: 2009
                 </span>
-                <span className="px-4 py-2 bg-green-100 text-green-700 rounded-lg text-sm font-medium">
-                  HQ: Mumbai, India
-                </span>
-                <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg text-sm font-medium">
-                  Global Reach: 52 countries
-                </span>
               </div>
 
               <p className="text-lg text-purple-600 font-semibold mb-6">

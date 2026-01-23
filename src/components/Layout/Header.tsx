@@ -11,6 +11,7 @@ const Header: React.FC = () => {
 
     {
       name: "Verticals",
+      href: "/solutions",
       submenu: [
         { name: "Entrepreneurship", href: "/entrepreneurship" },
         { name: "Citizenship", href: "/citizenship" },
@@ -51,9 +52,9 @@ const Header: React.FC = () => {
           <div className="flex items-center space-x-3">
             {/* 🖼️ Logo Image */}
             <img
-              src="/logo.png" // ← change this path to your actual logo file
+              src="https://res.cloudinary.com/dhs64xefe/image/upload/Idobro_logo-_JPEG_vifgkw" // ← change this path to your actual logo file
               alt="Idobro Logo"
-              className="h-10 w-10 object-contain"
+              className="h-14 w-auto object-contain"
             />
             <div>
               <div className="text-2xl font-bold text-blue-600">Idobro</div>
@@ -64,38 +65,42 @@ const Header: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8 relative">
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-8">
             {navigation.map((item) =>
               item.submenu ? (
-                <div key={item.name} className="relative">
-                  <button
-                    onClick={() => toggleDropdown(item.name)}
-                    className="flex items-center text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
+                <div key={item.name} className="relative group">
+                  {/* Parent link (clickable) */}
+                  <a
+                    href={item.href}
+                    className="flex items-center text-gray-700 hover:text-blue-600 font-medium transition-colors"
                   >
                     {item.name}
                     <ChevronDown className="ml-1 h-4 w-4" />
-                  </button>
+                  </a>
 
-                  {/* Dropdown Menu */}
-                  {activeDropdown === item.name && (
-                    <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg border border-gray-200 rounded-md py-2">
-                      {item.submenu.map((sub, idx) => (
-                        <a
-                          key={idx}
-                          href={sub.href}
-                          className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
-                        >
-                          {sub.name}
-                        </a>
-                      ))}
-                    </div>
-                  )}
+                  {/* Dropdown (hover only) */}
+                  <div
+                    className="absolute left-0 mt-2 w-56 bg-white shadow-lg border border-gray-200 rounded-md py-2
+                     opacity-0 invisible group-hover:opacity-100 group-hover:visible
+                     transition-all duration-200"
+                  >
+                    {item.submenu.map((sub, idx) => (
+                      <a
+                        key={idx}
+                        href={sub.href}
+                        className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                      >
+                        {sub.name}
+                      </a>
+                    ))}
+                  </div>
                 </div>
               ) : (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
+                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
                 >
                   {item.name}
                 </a>

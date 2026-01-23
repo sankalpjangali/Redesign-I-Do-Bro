@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-1">
             <div className="mb-6">
               <div className="text-3xl font-bold text-blue-400 mb-2">
-                idobro
+                Idobro
               </div>
               <div className="text-gray-400 mb-4">Multiply your Impact</div>
               <p className="text-gray-300 leading-relaxed">

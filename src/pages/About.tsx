@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Users,
   Briefcase,
@@ -7,7 +7,11 @@ import {
   Globe,
   TrendingUp,
   Mail,
+  Building2,
+  Calendar,
   Linkedin,
+  ChevronRight,
+  ChevronLeft,
 } from "lucide-react";
 
 interface TeamMember {
@@ -37,8 +41,33 @@ declare global {
 
 const ImpactJourneyPage: React.FC = () => {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  // const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [loadingTeam, setLoadingTeam] = useState(true);
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 350;
+      const newScrollLeft =
+        direction === "left"
+          ? scrollContainerRef.current.scrollLeft - scrollAmount
+          : scrollContainerRef.current.scrollLeft + scrollAmount;
 
+      scrollContainerRef.current.scrollTo({
+        left: newScrollLeft,
+        behavior: "smooth",
+      });
+    }
+  };
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current;
+      setShowLeftArrow(scrollLeft > 0);
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
   useEffect(() => {
     const fetchTeamMembers = async () => {
       try {
@@ -60,6 +89,44 @@ const ImpactJourneyPage: React.FC = () => {
 
     fetchTeamMembers();
   }, []);
+  const timelineEvents = [
+    {
+      year: "2009",
+      text: "Founded with vision to multiply social and environmental impact",
+    },
+    {
+      year: "2011",
+      text: "First major government partnership - Maharashtra collaboration begins",
+    },
+    {
+      year: "2013",
+      text: "RISE World Summit launched - 1,000 participants from 10 countries",
+    },
+    {
+      year: "2015",
+      text: "ABCD Model formalized and scaled - 500+ entrepreneurs supported",
+    },
+    {
+      year: "2017",
+      text: "PECO-System framework developed - systems thinking formalized",
+    },
+    {
+      year: "2018",
+      text: "International expansion - programs active in 7 countries",
+    },
+    {
+      year: "2020",
+      text: "Digital transformation accelerated - virtual impact scaling",
+    },
+    {
+      year: "2021",
+      text: "World Economic Forum Report launched - Systems Analysis Methodology",
+    },
+    {
+      year: "2024",
+      text: "International partnerships advanced - 240+ partnerships globally",
+    },
+  ];
 
   useEffect(() => {
     // Initialize AOS
@@ -112,130 +179,129 @@ const ImpactJourneyPage: React.FC = () => {
       </div>
 
       {/* Main Content Section */}
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="flex flex-wrap gap-4 mb-8" data-aos="fade-up">
-          <button className="px-4 py-2 bg-purple-100 text-purple-700 rounded-md text-sm font-medium">
-            Founded: 2009
-          </button>
-          <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-md text-sm">
-            HQ: Mumbai, India
-          </button>
-        </div>
-
-        <h2
-          className="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
-          Measure and multiply the socio-environmental impact of
-          <br className="hidden md:block" />
-          businesses, funds, and citizen action networks
-        </h2>
-
-        <div data-aos="fade-up" data-aos-delay="200">
-          <p className="text-gray-600 leading-relaxed mb-6 max-w-4xl">
-            We've catalyzed systemic change through a three-layer approach that
-            creates momentum for all. We connect to stakeholder eco-systems and
-            collaborations that benefit society and the planet. Through our
-            action-first/tech-enabled approach, we have built pioneering
-            measurement frameworks and mobilized over $1B to deliver impact at
-            scale.
-          </p>
-
-          <p className="text-gray-600 leading-relaxed mb-12 max-w-4xl">
-            Our unique approach combines proper tracking, community ownership,
-            and impact creation in every effort we undertake. We advance
-            transparency across global efforts, ensuring we deliver for isolated
-            efforts-they impact coordinated, multi-stakeholder mobilization.
-          </p>
-        </div>
-
-        <div
-          className="flex flex-wrap gap-8 md:gap-12"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
-          <div className="flex items-center gap-3">
-            <Users className="w-5 h-5 text-purple-600" />
-            <span className="text-gray-700">16 years of advisory</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <TrendingUp className="w-5 h-5 text-purple-600" />
-            <span className="text-gray-700">2M+ individuals reached</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <Award className="w-5 h-5 text-purple-600" />
-            <span className="text-gray-700">540+ partnerships</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <Globe className="w-5 h-5 text-purple-600" />
-            <span className="text-gray-700">Projects in 7 countries</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Timeline Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-start gap-8 mb-12" data-aos="fade-right">
-            <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center flex-shrink-0">
-              <div className="w-3 h-3 rounded-full bg-white"></div>
-            </div>
+      <div className="bg-white">
+        {/* Main Content Section */}
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Left Column - Who We Are */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                Our Journey
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                Who We Are
               </h2>
-              <p className="text-gray-600">
-                Over the years, we've grown our impact. Here are a few
-                highlights in a multi-year journey.
-              </p>
-            </div>
-          </div>
 
-          <div className="relative ml-4 border-l-2 border-gray-300">
-            {[
-              {
-                year: "2013",
-                text: "First international corporate partnership. Collaborated with...",
-              },
-              {
-                year: "2015",
-                text: "RISE Shared Measurement launched – 1,000 entrepreneurs from...",
-              },
-              {
-                year: "2018",
-                text: "UN SDG Results accelerated social work – 5800+ entrepreneurs measured impact...",
-              },
-              {
-                year: "2021",
-                text: "World Economic Forum launched Report – Systems Analysis Methodology created...",
-              },
-              {
-                year: "2024",
-                text: "International partnerships advanced – 240+ partnerships globally...",
-              },
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="ml-8 mb-8 flex gap-6"
-                data-aos="fade-left"
-                data-aos-delay={idx * 100}
-              >
-                <div className="text-purple-700 font-bold text-lg w-16 flex-shrink-0">
-                  {item.year}
+              <div className="flex flex-wrap gap-3 mb-6">
+                <span className="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg text-sm font-medium">
+                  Founded: 2009
+                </span>
+                <span className="px-4 py-2 bg-green-100 text-green-700 rounded-lg text-sm font-medium">
+                  HQ: Mumbai, India
+                </span>
+                <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg text-sm font-medium">
+                  Global Reach: 52 countries
+                </span>
+              </div>
+
+              <p className="text-lg text-purple-600 font-semibold mb-6">
+                "Measure and multiply the socio-environmental impact of Women,
+                Social, and Green (WSG) initiatives."
+              </p>
+
+              <div className="space-y-4 text-gray-700 mb-8">
+                <p>
+                  Idobro Impact Solutions is a leading social impact enterprise
+                  founded in 2009. We serve as catalysts for innovations and
+                  collaborations that benefit people and the planet. Through our
+                  unique five-step IS process and proven frameworks, we help
+                  organizations, communities, and ecosystems create lasting,
+                  measurable change.
+                </p>
+                <p>
+                  Our unique approach combines systems thinking, community
+                  ownership, and collaborative ecosystem design. We believe that
+                  complex social problems cannot be solved by isolated
+                  efforts—they require coordinated, multi-stakeholder solutions.
+                </p>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-2 gap-6">
+                <div className="flex items-center gap-3">
+                  <Calendar className="w-5 h-5 text-purple-600" />
+                  <span className="text-gray-700">16 years of delivery</span>
                 </div>
-                <div className="flex-1">
-                  <div className="flex items-start gap-2">
-                    <div className="w-2 h-2 rounded-full bg-purple-600 mt-2 flex-shrink-0"></div>
-                    <p className="text-gray-700">{item.text}</p>
-                  </div>
+                <div className="flex items-center gap-3">
+                  <Users className="w-5 h-5 text-purple-600" />
+                  <span className="text-gray-700">2M+ individuals reached</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Building2 className="w-5 h-5 text-purple-600" />
+                  <span className="text-gray-700">540+ partnerships</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Globe className="w-5 h-5 text-purple-600" />
+                  <span className="text-gray-700">7 countries active</span>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Right Column - Our Journey Timeline */}
+            <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Our Journey
+              </h3>
+
+              <div className="relative">
+                {/* Scrollable Timeline */}
+                <div className="overflow-y-auto max-h-96 pr-4 custom-scrollbar">
+                  <div className="space-y-6">
+                    {timelineEvents.map((event, index) => (
+                      <div key={index} className="flex gap-4">
+                        <div className="flex flex-col items-center">
+                          <div className="w-3 h-3 rounded-full bg-purple-600"></div>
+                          {index !== timelineEvents.length - 1 && (
+                            <div className="w-0.5 h-full bg-purple-300 mt-2"></div>
+                          )}
+                        </div>
+                        <div className="flex-1 pb-6">
+                          <div className="font-bold text-purple-700 mb-1">
+                            {event.year}
+                          </div>
+                          <p className="text-gray-700 text-sm">{event.text}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Scroll Indicators */}
+                <div className="absolute top-0 right-0 text-gray-400 text-xs">
+                  ▲
+                </div>
+                <div className="absolute bottom-0 right-0 text-gray-400 text-xs">
+                  ▼
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
+        <style>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #e5e7eb;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #9333ea;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #7e22ce;
+        }
+      `}</style>
+      </div>
       {/* RISE Values Section */}
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-12">
@@ -367,111 +433,112 @@ const ImpactJourneyPage: React.FC = () => {
       </div>
 
       {/* Team Section */}
-      <div className="bg-gradient-to-b from-white to-gray-50 py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12" data-aos="fade-up">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Meet Our Team
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Our dedicated professionals bring years of expertise and passion
-              to every project
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Team</h2>
+            <p className="text-gray-600 text-lg">
+              Meet the people driving impact and innovation
             </p>
           </div>
 
-          {loadingTeam ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg animate-pulse"
-                >
-                  <div className="w-full h-64 bg-gray-300"></div>
-                  <div className="p-6 space-y-4">
-                    <div className="h-6 bg-gray-300 rounded"></div>
-                    <div className="h-4 bg-gray-300 rounded w-2/3"></div>
-                    <div className="h-16 bg-gray-300 rounded"></div>
-                    <div className="h-10 bg-gray-300 rounded"></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : teamMembers.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-gray-500 text-lg">
-                No team members available at the moment
-              </p>
-            </div>
-          ) : (
-            <>
-              {/* Desktop: Grid with 4 columns */}
-              <div
-                className="hidden lg:grid lg:grid-cols-4 gap-6"
-                data-aos="fade-up"
+          <div className="relative group">
+            {/* Left Scroll Button */}
+            {showLeftArrow && (
+              <button
+                onClick={() => scroll("left")}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 opacity-0 group-hover:opacity-100"
+                aria-label="Scroll left"
               >
-                {teamMembers.slice(0, 4).map((member, idx) => (
+                <ChevronLeft className="w-6 h-6 text-gray-700" />
+              </button>
+            )}
+
+            {/* Right Scroll Button */}
+            {showRightArrow && (
+              <button
+                onClick={() => scroll("right")}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 opacity-0 group-hover:opacity-100"
+                aria-label="Scroll right"
+              >
+                <ChevronRight className="w-6 h-6 text-gray-700" />
+              </button>
+            )}
+
+            {/* Scrollable Container */}
+            <div
+              ref={scrollContainerRef}
+              onScroll={handleScroll}
+              className="overflow-x-scroll scrollbar-hide"
+              style={{
+                scrollbarWidth: "none",
+                msOverflowStyle: "none",
+                WebkitOverflowScrolling: "touch",
+              }}
+            >
+              <div className="flex space-x-6 pb-4 w-max">
+                {teamMembers.map((member) => (
                   <div
                     key={member.id}
-                    data-aos="fade-up"
-                    data-aos-delay={idx * 100}
+                    className="flex-shrink-0 w-80 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                   >
-                    <TeamCard member={member} />
+                    {/* Image */}
+                    <div className="relative overflow-hidden rounded-xl">
+                      <img
+                        src={member.imageUrl}
+                        alt={member.name}
+                        className="w-full h-60 object-cover shadow-lg transition-transform duration-300 hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="mt-4 space-y-4">
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900">
+                          {member.name}
+                        </h3>
+                        <p className="text-blue-600 font-semibold">
+                          {member.designation}
+                        </p>
+                      </div>
+
+                      {/* Contact */}
+                      <div className="flex items-center space-x-4 pt-3 border-t border-gray-200">
+                        <a
+                          href={member.linkedinUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center text-blue-600 hover:text-blue-700 transition-colors"
+                        >
+                          <Linkedin className="h-4 w-4 mr-1" />
+                          <span className="text-sm">LinkedIn</span>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
+            </div>
 
-              {/* Show remaining members in a scrollable row on desktop if more than 4 */}
-              {teamMembers.length > 4 && (
-                <div
-                  className="hidden lg:block mt-6"
-                  data-aos="fade-up"
-                  data-aos-delay="400"
-                >
-                  <div
-                    className="overflow-x-auto pb-4"
-                    style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-                  >
-                    <div className="flex gap-6">
-                      {teamMembers.slice(4).map((member) => (
-                        <div key={member.id} className="flex-shrink-0 w-72">
-                          <TeamCard member={member} />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
+            {/* Gradient Overlays */}
+            {showLeftArrow && (
+              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
+            )}
+            {showRightArrow && (
+              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+            )}
+          </div>
 
-              {/* Tablet: Grid with 2 columns */}
-              <div className="hidden md:grid md:grid-cols-2 lg:hidden gap-6">
-                {teamMembers.map((member, idx) => (
-                  <div
-                    key={member.id}
-                    data-aos="fade-up"
-                    data-aos-delay={idx * 100}
-                  >
-                    <TeamCard member={member} />
-                  </div>
-                ))}
-              </div>
-
-              {/* Mobile: Horizontal Scroll */}
-              <div
-                className="md:hidden overflow-x-auto pb-4"
-                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-              >
-                <div className="flex gap-4">
-                  {teamMembers.map((member) => (
-                    <div key={member.id} className="flex-shrink-0 w-80">
-                      <TeamCard member={member} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </>
-          )}
+          {/* Scroll Hint */}
         </div>
-      </div>
+
+        <style>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+      </section>
     </div>
   );
 };
@@ -505,29 +572,8 @@ const TeamCard: React.FC<{ member: TeamMember }> = ({ member }) => {
           </p>
         </div>
 
-        {/* Experience Badge */}
-        <div className="flex items-center gap-2 bg-purple-50 rounded-lg p-3">
-          <Briefcase className="h-4 w-4 text-purple-600 flex-shrink-0" />
-          <div className="flex-1">
-            <span className="text-xs font-semibold text-gray-700 block">
-              Experience
-            </span>
-            <span className="text-sm text-gray-900 font-medium">
-              {member.experience}
-            </span>
-          </div>
-        </div>
-
         {/* Contact Actions */}
         <div className="flex gap-3 pt-3 border-t border-gray-100">
-          <a
-            href={`mailto:${member.email}`}
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200 text-sm font-medium"
-            title="Send Email"
-          >
-            <Mail className="h-4 w-4" />
-            <span>Email</span>
-          </a>
           <a
             href={member.linkedinUrl}
             target="_blank"

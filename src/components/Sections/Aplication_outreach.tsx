@@ -6,6 +6,13 @@ const AmplificationOutreach: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/offerings");
+    }
+  };
   const offerings = [
     {
       id: 1,
@@ -127,12 +134,7 @@ const AmplificationOutreach: React.FC = () => {
         {/* CTA */}
         <div className="flex justify-center gap-3">
           <button
-            className={`${item.buttonColor} text-white px-8 py-4 rounded-full font-semibold text-lg transition hover:scale-105 shadow-lg`}
-          >
-            {item.buttonText}
-          </button>
-          <button
-            onClick={() => navigate(`/offerings`)}
+            onClick={handleBack}
             className={`${item.buttonColor} text-white px-8 py-4 rounded-full font-semibold text-lg transition hover:scale-105 shadow-lg`}
           >
             Back

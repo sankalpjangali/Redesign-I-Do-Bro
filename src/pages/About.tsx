@@ -18,10 +18,10 @@ interface TeamMember {
   id: number;
   name: string;
   designation: string;
-  imageUrl: string;
+  image: string;
   experience: string;
   email: string;
-  linkedinUrl: string;
+  linkedin_url: string;
 }
 
 // Extend Window interface for AOS
@@ -485,7 +485,7 @@ const ImpactJourneyPage: React.FC = () => {
                     {/* Image */}
                     <div className="relative overflow-hidden rounded-xl">
                       <img
-                        src={member.imageUrl}
+                        src={member.image}
                         alt={member.name}
                         className="w-full h-60 object-cover shadow-lg transition-transform duration-300 hover:scale-105"
                       />
@@ -506,7 +506,7 @@ const ImpactJourneyPage: React.FC = () => {
                       {/* Contact */}
                       <div className="flex items-center space-x-4 pt-3 border-t border-gray-200">
                         <a
-                          href={member.linkedinUrl}
+                          href={member.linkedin_url}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center text-blue-600 hover:text-blue-700 transition-colors"
@@ -549,7 +549,7 @@ const TeamCard: React.FC<{ member: TeamMember }> = ({ member }) => {
       {/* Image Container */}
       <div className="relative overflow-hidden h-64">
         <img
-          src={member.imageUrl}
+          src={member.image}
           alt={member.name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           onError={(e) => {
@@ -575,7 +575,7 @@ const TeamCard: React.FC<{ member: TeamMember }> = ({ member }) => {
         {/* Contact Actions */}
         <div className="flex gap-3 pt-3 border-t border-gray-100">
           <a
-            href={member.linkedinUrl}
+            href={member.linkedin_url}
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200 text-sm font-medium"

@@ -21,19 +21,16 @@ const Footer: React.FC = () => {
 
   const quickLinks = [
     { name: "About Us", href: "#about" },
-    { name: "Our Solutions", href: "#solutions" },
-    { name: "Impact Stories", href: "#impact" },
-    { name: "Partner with Us", href: "#contact" },
-    { name: "Resources", href: "#resources" },
-    { name: "Careers", href: "#careers" },
+    { name: "Our Verticals", href: "/solutions" },
+    { name: "Partner with Us", href: "/contact" },
+    { name: "Resources", href: "/resources" },
   ];
 
   const solutionLinks = [
-    { name: "Citizenship Programs", href: "#citizenship" },
-    { name: "Entrepreneurship Support", href: "#entrepreneurship" },
-    { name: "Partnership Opportunities", href: "#partnership" },
+    { name: "Citizenship Programs", href: "/citizenship" },
+    { name: "Entrepreneurship Support", href: "/entrepreneurship" },
+    { name: "Partnership Opportunities", href: "/partnership" },
     { name: "RISE Values Framework", href: "#rise" },
-    { name: "PECO-SYSTEM Approach", href: "#peco-system" },
   ];
 
   const resourceLinks = [
